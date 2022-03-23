@@ -16,9 +16,9 @@
   </head>
   <body>
      <%= render 'layouts/navbar' %>
-      <main class ="col px-0 flex-grow-1">
-          <div class=" py-3">
-            <nav class="navbar navbar-light bg-light">
+      <main class ="col px-0 flex-grow-1 " >
+          <div>
+            <nav class="navbar navbar-light bg-dark">
               <div class="container-fluid">
                 <form class="d-flex">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -30,6 +30,7 @@
           <br>
               <%= yield %>
           </div>
+          
            <div class="footer-copyright text-center py-3 nav-bottom  container text-center">© 2020 Copyright:
                      <a href="/"> Libmanage.com.com</a>
           </div>
