@@ -3,7 +3,5 @@ class HomeController < ApplicationController
     end
     def borrow
     end
-    def history
-    end
     
 end
