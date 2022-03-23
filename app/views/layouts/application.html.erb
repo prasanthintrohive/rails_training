@@ -15,19 +15,30 @@
       <title>Libmanage</title> 
   </head>
   <body>
-     <%= render 'layouts/navbar' %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/navbar' %>
+     <% end %>
       <main class ="col px-0 flex-grow-1 " >
           <div>
             <nav class="navbar navbar-light bg-dark">
               <div class="container-fluid">
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <br><br>
               </div>
             </nav>
+
+            <p class="navbar-text float-right">
+                <% if user_signed_in? %>
+                  Logged in as <strong><%= current_user.email %></strong>.
+                  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                
+                <% end %>
+            </p>
+
+            
           <div class="container">
           <br>
+            <%=render "layouts/notification"%>
               <%= yield %>
           </div>
           
