@@ -53,4 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_071253) do
   end
 
   add_foreign_key "books", "authors"
+  add_foreign_key "loaned_books", "books"
+  add_foreign_key "loaned_books", "users"
 end
