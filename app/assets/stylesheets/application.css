@@ -32,7 +32,22 @@
    font-size: large;
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+#sidebar{
+   position: absolute;
+   top: 0;
+
+}
 
 #user_email{
    font-size: 15px;
+}
+
+
+#side-text{
+   margin-left: 50px;
+}
+
+.active a{
+   font-size: 20px;
+   color: goldenrod !important;
 }

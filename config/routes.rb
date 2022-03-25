@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "home#index"
   get 'home/borrow'
+  get 'home/my_book'
+
+  get 'home/history'
+  # get 'home/borrow
+
 end

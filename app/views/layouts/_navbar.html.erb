@@ -1,8 +1,8 @@
-<div class="container-fluid">
+<div class="container-fluid" id ="sidebar">
     <div class="row min-vh-100 flex-column flex-md-row">
       <aside class="col-12 col-md-3 col-xl-2 p-0 bg-dark ">
         <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
-          <div class="text-center p-1">
+          <div class="text-center p-1" id="side-text">
            <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap" ><strong><%= current_user.full_name %></strong>
            <br><span class="text-muted" id="user_email"><%= current_user.email %></span>
            </a>
@@ -10,21 +10,21 @@
               <button type="button" class="navbar-toggler border-0 order-1" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse order-last" id="nav">
+          <div class="collapse navbar-collapse order-last" id="side-text">
             <ul class="navbar-nav flex-column w-100 justify-content-center">
-            <li class="nav-item">
-              <a href="#" class="nav-link active"></a>
+            <li class="nav-item ">
+              <a href="#" class="nav-link"></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%= active_class(home_borrow_path) %>">
             <%= link_to 'Borrow book',home_borrow_path, class: 'nav-link'%>
             </li>
-            <li class="nav-item">
-            <%= link_to 'My book',home_borrow_path, class: 'nav-link '%>
+            <li class="nav-item <%= active_class(home_my_book_path) %>">
+            <%= link_to 'My book',home_my_book_path, class: 'nav-link '%>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"> History </a>
-            </li>
+            <li class="nav-item <%= active_class(home_history_path) %>" >
+            <%= link_to 'History',home_history_path, class: 'nav-link '%>
 
+            </li>
             <% if current_user.admin %>
               <li class="nav-item">
                 <%= link_to 'Book status',home_borrow_path, class: 'nav-link'%>
@@ -33,7 +33,7 @@
 
 
             <% if user_signed_in? %>
-            <li class="nav-item">
+            <li class="nav-item <%= active_class(edit_user_registration_path) %>">
   
               <%= link_to 'Edit profile',edit_user_registration_path, class: 'nav-link'%>
             </li>
