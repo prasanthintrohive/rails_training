@@ -3,7 +3,7 @@
       <aside class="col-12 col-md-3 col-xl-2 p-0 bg-dark ">
         <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
           <div class="text-center p-3">
-           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap" >Username</a>
+           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap" ><strong><%= current_user.email %></strong></a>
           </div>
               <button type="button" class="navbar-toggler border-0 order-1" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,17 +17,29 @@
             <%= link_to 'Borrow book',home_borrow_path, class: 'nav-link'%>
             </li>
             <li class="nav-item">
-            <%= link_to 'Return book',home_borrow_path, class: 'nav-link '%>
+            <%= link_to 'My book',home_borrow_path, class: 'nav-link '%>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link"> History </a>
             </li>
+
+            <% if current_user.admin %>
+              <li class="nav-item">
+                <%= link_to 'Book status',home_borrow_path, class: 'nav-link'%>
+              </li>
+            <% end %>
+
+
+            <% if user_signed_in? %>
             <li class="nav-item">
-              <a href="#" class="nav-link"> Edit profile </a>
+  
+              <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link'%>
             </li>
                <li class="nav-item">
-              <a href="#" class="nav-link"> log out </a>
+              
+              <%= link_to 'log out', destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
+            <% end %>
           </ul>
           </div>      
         </nav>   

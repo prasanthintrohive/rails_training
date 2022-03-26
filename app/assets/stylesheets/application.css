@@ -18,6 +18,9 @@
     bottom: 0;
     
  }
+ #edit-box{
+   margin-left:220px ;
+ }
  /* .nav-sep {
     background: none;
     border-bottom: 1px solid #455a64;
