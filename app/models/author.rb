@@ -1,3 +1,3 @@
 class Author < ApplicationRecord
-    has_many :loaned_books
+    has_many :books
 end
