@@ -1,26 +1,44 @@
-<h2>Log in</h2>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<body>
+    <div class="container login-container">
+      <div class="row">
+        <div class="col-md-6 ads">
+          <%= image_tag("login.jpg", id: "login-banner") %>
+          <h1><span id="fl">Library</span><span id="sl">Management</span></h1>
+        </div>
+        <div class="col-md-6 login-form">
+          <div class="profile-img">
+		  <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3BlbiUyMGJvb2t8ZW58MHx8MHx8&w=1000&q=80" alt="profile_img" height="140px" width="140px;"
+          </div>
+          <h3>Login</h3>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>  
+          <form>
+            <div class="form-group">
+			 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email", required: true%>
+            </div>
+            <div class="form-group">
+			  <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password", required: true %>
+            </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="form-group">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %> 
+            <div class="form-group">
+			  <%= f.submit "Sign In", class: "btn btn-secondary btn-lg btn-block" %>
+            </div>
+			<br>
+            <div class="form-group forget-password">
+			    <%= render "devise/shared/links" %>
+            </div>
+          </form>
+        <% end %> 
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
