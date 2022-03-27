@@ -2,6 +2,6 @@ class HomeController < ApplicationController
     def index
     end
     def borrow
-    end
-    
+        @book = Book.all
+    end 
 end

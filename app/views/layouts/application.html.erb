@@ -15,15 +15,11 @@
   </head>
   <body>
     <% if user_signed_in? %>
+      <%= render 'layouts/header' %>
       <%= render 'layouts/navbar' %>
      <% end %>
       <main class ="col px-0 flex-grow-1 " >
           <div>
-            <nav class="navbar navbar-light bg-dark">
-              <div class="container-fluid">
-                <br><br>
-              </div>
-            </nav>
           <div class="container">
           <br>
             <%=render "layouts/notification"%>

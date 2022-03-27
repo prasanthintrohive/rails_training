@@ -1,1 +1,23 @@
-hello all
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @book.each do |b|  %>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= b.title %></td>
+      <td><%= b.author.name %></td>
+      <td><%= button_to "Loan", home_history_path %></td>
+    </tr>
+    <% end  %>
+  </tbody>
+
+</table>

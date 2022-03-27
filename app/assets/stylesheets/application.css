@@ -28,3 +28,28 @@
     font-size: 14px;
     padding: 26px 24px;
  } */
+#main-text{
+   position: fixed;
+   left: 750px;
+   font-size: large;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#sidebar{
+   position: relative;
+   top: 0;
+
+}
+
+#user_email{
+   font-size: 15px;
+}
+
+
+#side-text{
+   margin-left: 50px;
+}
+
+.active a{
+   font-size: 20px;
+   color: goldenrod !important;
+}
