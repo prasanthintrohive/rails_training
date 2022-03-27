@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   root "home#index"
   get 'home/borrow'
   get 'home/my_book'
-
+  
   get 'home/history'
   # get 'home/borrow
-
+  get 'admin/add_book_index'
+  post 'admin/create_author'
+  
 end
