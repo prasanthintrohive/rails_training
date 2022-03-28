@@ -8,11 +8,11 @@ class AdminController < ApplicationController
             flash[:notice] =  "the author was created successfully "
         else 
             redirect_to admin_add_book_index_path
-            flash[:alert] =  "Author already present please enter correctly"
+            flash[:alert] =  @author.errors.full_messages&.join(', ')
         end
      end
      def create_book
-        @book = Book.new(params.require(:book).permit(:title, :endpublised_year, :author_id)) 
+        @book = Book.new(params.require(:book).permit(:title, :published_year, :author_id)) 
         if @book.save
             redirect_to admin_add_book_index_path
             flash[:notice] =  "the book was created successfully "

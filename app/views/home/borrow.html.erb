@@ -10,9 +10,11 @@
     </tr>
   </thead>
   <tbody>
+  <% count = 0 %>
   <% @book.each do |b|  %>
+    
     <tr>
-      <td><%= b.id %></td>
+      <td><%= count += 1 %></td>
       <td><%= b.title %></td>
       <td><%= b.author.name %></td>
       <td><%= button_to "Loan", home_history_path %></td>
