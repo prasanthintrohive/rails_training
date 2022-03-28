@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_28_085917) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_28_093504) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,12 +32,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_28_085917) do
   create_table "loaned_books", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
-    t.date "loaned_date", null: false
-    t.date "returned_date", null: false
+    t.datetime "loaned_date", precision: nil, null: false
+    t.datetime "returned_date", precision: nil, null: false
     t.string "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "due_date", null: false
+    t.datetime "due_date", precision: nil, null: false
     t.index ["book_id"], name: "index_loaned_books_on_book_id"
     t.index ["user_id"], name: "index_loaned_books_on_user_id"
   end
