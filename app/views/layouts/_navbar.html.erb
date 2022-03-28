@@ -3,7 +3,7 @@
       <aside class="col-12 col-md-3 col-xl-2 p-0 bg-dark ">
         <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
           <div class="text-center p-1" id="side-text">
-           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap" ><strong><%= current_user.full_name %></strong>
+           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap" ><strong><%= current_user.full_name.capitalize %></strong>
            <br><span class="text-muted" id="user_email"><%= current_user.email %></span>
            </a>
           </div>
@@ -29,7 +29,7 @@
               <li class="nav-item">
                 <%= link_to 'Book status',home_borrow_path, class: 'nav-link'%>
               </li>
-              <li class="nav-item">
+              <li class="nav-item <%= active_class(admin_add_book_index_path) %>">
                 <%= link_to 'Add Book',admin_add_book_index_path, class: 'nav-link'%>
               </li>
             <% end %>
