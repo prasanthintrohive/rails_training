@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   # get 'home/borrow
   get 'admin/add_book_index'
   post 'admin/create_author'
+  post 'admin/create_book'
   
 end
