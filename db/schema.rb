@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_28_093504) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_29_081547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,8 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_28_093504) do
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
     t.datetime "loaned_date", precision: nil, null: false
-    t.datetime "returned_date", precision: nil, null: false
-    t.string "status", null: false
+    t.datetime "returned_date", precision: nil
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "due_date", precision: nil, null: false

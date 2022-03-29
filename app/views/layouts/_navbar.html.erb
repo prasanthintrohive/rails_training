@@ -19,15 +19,15 @@
             <%= link_to 'Borrow book',home_borrow_path, class: 'nav-link'%>
             </li>
             <li class="nav-item <%= active_class(home_my_book_path) %>">
-            <%= link_to 'My book',home_my_book_path, class: 'nav-link '%>
+            <%= link_to 'My book',user_my_book_path, class: 'nav-link '%>
             </li>
             <li class="nav-item <%= active_class(home_history_path) %>" >
             <%= link_to 'History',home_history_path, class: 'nav-link '%>
 
             </li>
             <% if current_user.admin %>
-              <li class="nav-item">
-                <%= link_to 'Book status',home_borrow_path, class: 'nav-link'%>
+              <li class="nav-item <%= active_class(admin_accept_request_index_path)%>">
+                <%= link_to 'Book status',admin_accept_request_index_path, class: 'nav-link'%>
               </li>
               <li class="nav-item <%= active_class(admin_add_book_index_path) %>">
                 <%= link_to 'Add Book',admin_add_book_index_path, class: 'nav-link'%>

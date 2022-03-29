@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   get 'home/history'
   # get 'home/borrow
   get 'admin/add_book_index'
+  get 'admin/accept_request_index'
   post 'admin/create_author'
   post 'admin/create_book'
-  
+  get '/home/:id' => 'home#request_to_borrow'
+  get '/admin/:id' => 'admin#approve_request'
+  get 'user/my_book'
 end
