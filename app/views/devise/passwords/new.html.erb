@@ -4,25 +4,32 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <body>
-    
+    <div class="container login-container">
+      <div class="row">
+        <div class="col-md-6 ads">
+          <%= image_tag("login.jpg", id: "login-banner") %>
+          <h1><span id="fl">Library</span><span id="sl">Management</span></h1>
+        </div>
         <div class="col-md-6 login-form">
+          <div class="profile-img">
+		  <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b3BlbiUyMGJvb2t8ZW58MHx8MHx8&w=1000&q=80" alt="profile_img" height="140px" width="140px;"
+          </div>
           <h3>Forgot your password?</h3>
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>  
+          <%= render "devise/shared/error_messages", resource: resource %>
           <form>
             <div class="form-group">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"Email" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email", required: true%>
             </div>
-          
             <div class="form-group">
               <div class="actions">
-                <%= f.submit "Send me reset password instructions", class: "btn btn-secondary btn-lg btn-block" %>
+                <%= f.submit "Submit", class: "btn btn-secondary btn-lg btn-block" %>
               </div>
             </div>
-          </form>
-        <% end %>
-        <%= render "devise/shared/links" %>
+            </form>
+            <% end %> 
+            <%= render "devise/shared/links" %>
         </div>
       </div>
     </div>
-    <br><br>
