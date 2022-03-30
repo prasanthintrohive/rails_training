@@ -10,16 +10,16 @@
     </tr>
   </thead>
   <tbody>
-  <% count = 0 %>
-  <% @book.each do |b|  %>
-    
-    <tr>
-      <td><%= count += 1 %></td>
-      <td><%= b.title %></td>
-      <td><%= b.author.name %></td>
-      <td><%= button_to "Loan", home_history_path %></td>
-    </tr>
-    <% end  %>
+      <% count = 0 %>
+      <% @book.each do |b|  %>
+      <% if b.loaned_books == [] %>
+        <tr>
+          <td><%= count += 1 %></td>
+          <td><%= b.title %></td>
+          <td><%= b.author.name %></td>
+          <td><%= link_to "Borrow",{"controller"=>"home", "action"=>"request_to_borrow", id: b.id},method: :get, class: 'btn btn-primary'%></td>
+        </tr>
+         <% end %>
+      <% end  %>
   </tbody>
-
 </table>

@@ -1,0 +1,40 @@
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">S.no</th>
+      <th scope="col">Username</th>
+      <th scope="col">Book Name</th>
+      <th scope="col">Author Name</th>
+      <th scope="col">Borrowed date</th>
+      <th scope="col">Due date</th>
+      <th scope="col">Returned date</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+ 
+  <% count = 0 %>
+  <% @loanedbook.each do |l|  %>
+  
+    <tr>
+      <td><%= count += 1 %></td> 
+      <td><%= l.user.full_name %></td>
+      <td><%= l.book.title %></td>
+      <td><%= l.book.author.name %></td>
+      <td><%= l.loaned_date.to_date %></td>
+      <td><%= l.due_date.to_date %></td>
+      <td><%= l.returned_date%></td>
+      <td><%= l.status %></td>
+     <% if l.status == "pending"%>
+       <td><%= link_to "Approve",{"controller"=>"admin", "action"=>"approve_request", id: l.id},method: :get, class: 'btn btn-primary'%></td>
+     <% elsif l.status == "verify"%>
+       <td><%= link_to "return approval",{"controller"=>"admin", "action"=>"book_return_approve", id: l.id},method: :get, class: 'btn btn-primary'%></td>
+     <% else %>
+       <td></td>
+     <% end %>
+    </tr>
+  <% end  %>
+</tbody>
+</table>
