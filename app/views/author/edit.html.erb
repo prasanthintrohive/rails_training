@@ -1,0 +1,10 @@
+<h1>Edit author</h1>
+<%= form_with model: @author, url: edit_author_path(@author), method: :patch, local: true do |f| %>
+    <p>
+    <%= f.label :name%><br>
+    <%= f.text_field :name %>
+    </p>
+     <p>
+      <%= f.submit 'add' %>
+    </p>
+<% end %>  

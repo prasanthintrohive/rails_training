@@ -1,0 +1,48 @@
+<h2>Add Book</h2>
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">S.no</th>
+      <th scope="col">Book</th>
+      <th scope="col">Author</th>
+      <th scope="col">Action1</th>
+      <th scope="col">Action2</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+  <% count = 0 %>
+  <% @book.each do |book|  %>
+    
+    <tr>
+      <td><%= count += 1 %></td>
+      <td><%= book.title %></td>
+      <td><%= book.author.name %></td>
+      <td><%= link_to "Edit", edit_book_path(book) %></td>
+      <td><%= button_to "Delete",{action: :destroy, id: book.id}, method: :delete %></td>    
+    </tr>
+    <% end  %>
+  </tbody>
+
+</table>
+
+
+<%= form_with scope: :book, url: book_create_book_path(@book)  do |f| %>
+   <p>
+   <%= f.label :title%><br>
+   <%= f.text_field :title %>
+   </p>
+   <p>
+   <%= f.label :published_year%><br>
+   <%= f.text_field :published_year %>
+   </p>
+   <p>
+   <%= f.label :author_id%><br>
+   <%= f.text_field :author_id %>
+   </p>
+    <p>
+     <%= f.submit 'add' %>
+   </p>
+<% end %>
