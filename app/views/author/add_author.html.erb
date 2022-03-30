@@ -1,0 +1,36 @@
+<h2>Add Authors</h2>
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">S.no</th>
+      <th scope="col">Author</th>
+      <th scope="col">Action1</th>
+      <th scope="col">Action2</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <% count = 0 %>
+  <% @author.each do |author|  %>
+    <tr>
+      <td><%= count += 1 %></td>
+      <td><%= author.name %></td>
+      <td><%= link_to "Edit", edit_author_path(author) %></td>
+      <td><%= button_to "Delete",{action: :destroy, id: author.id}, method: :delete %></td>    
+    </tr>
+  <% end  %>
+  </tbody>
+
+</table>
+
+
+<%= form_with scope: :author, url: author_create_author_path(@author)  do |f| %>
+   <p>
+   <%= f.label :name%><br>
+   <%= f.text_field :name %>
+   </p>
+    <p>
+     <%= f.submit 'add' %>
+   </p>
+<% end %>
