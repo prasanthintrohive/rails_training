@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   post 'admin/create_book'
   get '/home/:id' => 'home#request_to_borrow'
   get '/admin/:id' => 'admin#approve_request'
-  get 'user/my_book'
+  get '/admins/:id' => 'admin#book_return_approve'
+  get 'user/my_book_index'
+  get '/user/:id' => 'user#request_to_return'
 end

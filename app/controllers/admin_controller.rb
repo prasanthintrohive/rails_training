@@ -16,6 +16,18 @@ class AdminController < ApplicationController
        redirect_to admin_accept_request_index_path
     end
 
+    def book_return_approve
+        @loanedbook = LoanedBook.find(params[:id])
+        @loanedbook.status = nil
+        @loanedbook.returned_date = Time.now
+        if @loanedbook.save()
+            flash[:notice] =  "verification completed"
+        else
+            flash[:notice] =   @loanedbook.errors.full_messages&.join(', ')
+           end
+           redirect_to admin_accept_request_index_path
+    end
+
     def create_author
         @author = Author.new(params.require(:author).permit(:name)) 
         if @author.save

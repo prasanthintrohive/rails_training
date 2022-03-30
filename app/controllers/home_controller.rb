@@ -3,8 +3,7 @@ class HomeController < ApplicationController
     end
     def borrow
         @loanedbook = LoanedBook.all
-        @book = Book.all
-        
+        @book = Book.all 
     end 
     def request_to_borrow
         @loanedbook = LoanedBook.new
@@ -19,6 +18,6 @@ class HomeController < ApplicationController
         else 
             flash[:alert] =  @loanedbook.errors.full_messages&.join(', ')
         end
-        redirect_to home_borrow_pa sth
+        redirect_to home_borrow_path
      end
 end

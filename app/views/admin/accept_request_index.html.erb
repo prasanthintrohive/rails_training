@@ -19,18 +19,20 @@
   <% @loanedbook.each do |l|  %>
   
     <tr>
-      <td><%= count += 1 %></td>
+      <td><%= count += 1 %></td> 
       <td><%= l.user.full_name %></td>
       <td><%= l.book.title %></td>
       <td><%= l.book.author.name %></td>
       <td><%= l.loaned_date.to_date %></td>
       <td><%= l.due_date.to_date %></td>
-      <td></td>
+      <td><%= l.returned_date%></td>
       <td><%= l.status %></td>
      <% if l.status == "pending"%>
-      <td><%= link_to "Approve",{"controller"=>"admin", "action"=>"approve_request", id: l.id},method: :get, class: 'btn btn-primary'%></td>
+       <td><%= link_to "Approve",{"controller"=>"admin", "action"=>"approve_request", id: l.id},method: :get, class: 'btn btn-primary'%></td>
+     <% elsif l.status == "verify"%>
+       <td><%= link_to "return approval",{"controller"=>"admin", "action"=>"book_return_approve", id: l.id},method: :get, class: 'btn btn-primary'%></td>
      <% else %>
-     <td><%=  %></td>
+       <td></td>
      <% end %>
     </tr>
   <% end  %>
