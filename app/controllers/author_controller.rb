@@ -1,4 +1,5 @@
 class AuthorController < ApplicationController
+  
     def add_author
         @author = Author.all
     end

@@ -21,7 +21,7 @@ class BookController < ApplicationController
             flash[:success] = "book  successfully updated!"
             redirect_to book_add_book_path
           else
-            flash.now[:error] = "Book item update failed"
+            flash[:alert] = @book.errors.full_messages&.join(', ')
             render :edit
         end
      end

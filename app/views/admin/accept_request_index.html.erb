@@ -25,7 +25,7 @@
       <td><%= l.book.author.name %></td>
       <td><%= l.loaned_date.to_date %></td>
       <td><%= l.due_date.to_date %></td>
-      <td><%= l.returned_date%></td>
+      <td><%= l.returned_date&.to_date%></td>
       <td><%= l.status %></td>
      <% if l.status == "pending"%>
        <td><%= link_to "Approve",{"controller"=>"admin", "action"=>"approve_request", id: l.id},method: :get, class: 'btn btn-primary'%></td>
