@@ -1,0 +1,33 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">S.no</th>
+      <th scope="col">Book Name</th>
+      <th scope="col">Author Name</th>
+      <th scope="col">Borrowed date</th>
+      <th scope="col">Due date</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+ 
+  <% count = 0 %>
+  <% @loanedbooks.each do |loaned_book|  %>
+    <tr>
+      <td><%= count += 1 %></td> 
+      <td><%= loaned_book.book.title %></td>
+      <td><%= loaned_book.book.author.name %></td>
+      <td><%= loaned_book.loaned_date.to_date %></td>
+      <td><%= loaned_book.due_date.to_date %></td>
+      <td><%= loaned_book.status %></td>
+      <% if loaned_book.status == 'approved' %>
+        <td><%= link_to 'RETURN', {controller: "request",action: "request_to_return", id: loaned_book.id }, method: :get ,class: "btn btn-primary" %></td>
+      <% else %>
+        <td></td>
+      <% end %>
+     
+    </tr>
+  <% end  %>
+</tbody>
+</table>

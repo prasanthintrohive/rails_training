@@ -12,12 +12,12 @@
   <tbody>
       <% count = 0 %>
       <% @book.each do |b|  %>
-      <% if b.loaned_books == [] %>
+      <% unless b.loaned_books.where(user_id: current_user.id).where("status != 'returned'").exists? %>
         <tr>
           <td><%= count += 1 %></td>
           <td><%= b.title %></td>
           <td><%= b.author.name %></td>
-          <td><%= link_to "Borrow",{"controller"=>"home", "action"=>"request_to_borrow", id: b.id},method: :get, class: 'btn btn-primary'%></td>
+          <td><%= link_to "Borrow", {controller: 'request', action: 'request_to_borrow', id: b.id} ,method: :get, class: 'btn btn-primary'%></td>
         </tr>
          <% end %>
       <% end  %>
