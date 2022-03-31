@@ -17,11 +17,9 @@ Rails.application.routes.draw do
   delete '/book/:id', to: 'book#destroy'
   get 'home/history'
   # get 'home/borrow
-  get 'admin/add_book_index'
   get 'admin/accept_request_index'
-  
-  get '/admin/:id' => 'admin#approve_request'
-  get '/admins/:id' => 'admin#book_return_approve'
+  get '/admin/borrow/:id' => 'request#approve_to_borrow'
+  get '/admin/return/:id' => 'request#approve_to_return'
   get 'request/my_book_index'
   get '/request/borrow/:id' => 'request#request_to_borrow', as: 'borrow_user'
   get '/request/return/:id' => 'request#request_to_return'

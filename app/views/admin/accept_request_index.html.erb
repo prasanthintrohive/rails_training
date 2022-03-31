@@ -16,21 +16,20 @@
   <tbody>
  
   <% count = 0 %>
-  <% @loanedbook.each do |l|  %>
-  
+  <% @loanedbooks.each do |loaned_book|  %>
     <tr>
       <td><%= count += 1 %></td> 
-      <td><%= l.user.full_name %></td>
-      <td><%= l.book.title %></td>
-      <td><%= l.book.author.name %></td>
-      <td><%= l.loaned_date.to_date %></td>
-      <td><%= l.due_date.to_date %></td>
-      <td><%= l.returned_date&.to_date%></td>
-      <td><%= l.status %></td>
-     <% if l.status == "pending"%>
-       <td><%= link_to "Approve",{"controller"=>"admin", "action"=>"approve_request", id: l.id},method: :get, class: 'btn btn-primary'%></td>
-     <% elsif l.status == "verify"%>
-       <td><%= link_to "return approval",{"controller"=>"admin", "action"=>"book_return_approve", id: l.id},method: :get, class: 'btn btn-primary'%></td>
+      <td><%= loaned_book.user.full_name %></td>
+      <td><%= loaned_book.book.title %></td>
+      <td><%= loaned_book.book.author.name %></td>
+      <td><%= loaned_book.loaned_date.to_date %></td>
+      <td><%= loaned_book.due_date.to_date %></td>
+      <td><%= loaned_book.returned_date&.to_date%></td>
+      <td><%= loaned_book.status %></td>
+     <% if loaned_book.status == LoanedBook::STATUS[:pending]%>
+       <td><%= link_to "Approve",{"controller"=>"request", "action"=>"approve_to_borrow", id: loaned_book.id},method: :get, class: 'btn btn-primary'%></td>
+     <% elsif loaned_book.status == LoanedBook::STATUS[:verify]%>
+       <td><%= link_to "return approval",{"controller"=>"request", "action"=>"approve_to_return", id: loaned_book.id},method: :get, class: 'btn btn-primary'%></td>
      <% else %>
        <td></td>
      <% end %>
