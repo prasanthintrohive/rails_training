@@ -8,8 +8,8 @@ class AuthorController < ApplicationController
     def create_author
         @author = Author.new(params.require(:author).permit(:name)) 
         if @author.save
-            redirect_to author_add_author_path
             flash[:notice] =  "the author was created successfully "
+            redirect_to author_add_author_path
         else 
             redirect_to author_add_author_path
             flash[:alert] =  @author.errors.full_messages&.join(', ')
@@ -18,17 +18,17 @@ class AuthorController < ApplicationController
     def update
         @author = Author.find(params[:id])
         if @author.update(params.require(:author).permit(:name))
-            flash[:success] = "author successfully updated!"
+            flash[:notice] = "author successfully updated!"
             redirect_to author_add_author_path
           else
-            flash.now[:error] = "author item update failed"
+            flash[:alert] =  @author.errors.full_messages&.join(', ')
             render :edit
         end
     end 
     def destroy
         @author = Author.find(params[:id])
         @author.destroy
-        flash[:success] = "The author was successfully destroyed."
+        flash[:notice] = "The author was successfully destroyed."
         redirect_to author_add_author_path(@author)
     end
 end

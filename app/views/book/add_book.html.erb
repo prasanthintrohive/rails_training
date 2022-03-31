@@ -1,6 +1,27 @@
 <h2>Add Book</h2>
-<table class="table table-striped">
+<%= form_with  scope: :book, url: book_create_book_path(@book)  do |f| %>
+  <br>
+<div class= "row">
+    <div class= "col-md-3">
+      <%= f.text_field :title, placeholder: 'Title', class:"form-control " %>
+    </div>  
+    <div class= "col-md-3">
+      <%= f.text_field :published_year, placeholder: 'Published year', class:"form-control " %>
+    </div>
+    <div class= "col-md-3">
+      <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]}, 
+      {},  class: "form form-group form-control"  %>
+    </div>
+    <div class= "col-md-3">
+      <%= f.submit 'add', class:"btn btn-secondary" %>
+    </div>      
+</div>
+<% end %>
+<br><br>
 
+
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">S.no</th>
@@ -9,13 +30,11 @@
       <th scope="col">Action1</th>
       <th scope="col">Action2</th>
 
-
     </tr>
   </thead>
   <tbody>
   <% count = 0 %>
-  <% @book.each do |book|  %>
-    
+  <% @book.each do |book|  %>   
     <tr>
       <td><%= count += 1 %></td>
       <td><%= book.title %></td>
@@ -25,24 +44,4 @@
     </tr>
     <% end  %>
   </tbody>
-
 </table>
-
-
-<%= form_with scope: :book, url: book_create_book_path(@book)  do |f| %>
-   <p>
-   <%= f.label :title%><br>
-   <%= f.text_field :title %>
-   </p>
-   <p>
-   <%= f.label :published_year%><br>
-   <%= f.text_field :published_year %>
-   </p>
-   <p>
-   <%= f.label :author_id%><br>
-   <%= f.text_field :author_id %>
-   </p>
-    <p>
-     <%= f.submit 'add' %>
-   </p>
-<% end %>

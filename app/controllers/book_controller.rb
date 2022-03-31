@@ -1,6 +1,7 @@
 class BookController < ApplicationController
     def add_book 
         @book = Book.all 
+        @author = Author.all
     end 
     def edit
         @book = Book.find(params[:id])
