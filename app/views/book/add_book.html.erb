@@ -1,31 +1,28 @@
 <h2>Add Book</h2>
+
+<%= form_with  scope: :book, url: book_create_book_path(@book)  do |f| %>
   <br>
-
-<%= form_with scope: :book, url: book_create_book_path(@book)  do |f| %>
-
-
-  <div class="row">
-    <div class="col-3">
-   <%= f.label :title%>
-   <%= f.text_field :title, class:"form-control" %>
+<div class= "row">
+    <div class= "col-md-3">
+      <%= f.text_field :title, placeholder: 'Title', class:"form-control " %>
+    </div>  
+    <div class= "col-md-3">
+      <%= f.text_field :published_year, placeholder: 'Published year', class:"form-control " %>
     </div>
-    <div class="col-3">
-   <%= f.label :published_year%>
-   <%= f.text_field :published_year, class:"form-control" %>
+    <div class= "col-md-3">
+      <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]}, 
+      {},  class: "form form-group form-control"  %>
     </div>
-    <div class="col-3">
-   <%= f.label :author_id%>
-   <%= f.text_field :author_id, class:"form-control" %>
-    </div>
-  </div>
-  <br>
-  <%= f.submit 'add', class:"btn btn-primary"%>
-
+    <div class= "col-md-3">
+      <%= f.submit 'add', class:"btn btn-secondary" %>
+    </div>      
+</div>
 <% end %>
+<br><br>
 
-<br>
+
+
 <table class="table table-striped">
-
   <thead>
     <tr>
       <th scope="col">S.no</th>
@@ -34,10 +31,10 @@
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
 
-
     </tr>
   </thead>
   <tbody>
+
 
   <% @book.each_with_index do |book,index|  %>
     <tr>
@@ -55,5 +52,4 @@
   </tbody>
 
 </table>
-
 

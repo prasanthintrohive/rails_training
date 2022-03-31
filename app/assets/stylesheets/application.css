@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  *= require_font-awesome
-
 */
+
+
  .nav-bottom {
     position: absolute;
     bottom: 0;
@@ -58,4 +59,3 @@
    font-size: 20px;
    color: goldenrod !important;
 }
-
