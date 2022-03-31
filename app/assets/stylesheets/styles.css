@@ -81,3 +81,6 @@ body {
   .footer {
     min-width: 100%;
   }
+  #icons:hover {
+    fill: rgb(48, 124, 143);
+  }

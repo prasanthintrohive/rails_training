@@ -12,7 +12,9 @@
  *
  *= require_tree .
  *= require_self
- */
+ *= require_font-awesome
+
+*/
  .nav-bottom {
     position: absolute;
     bottom: 0;
@@ -37,7 +39,12 @@
 #sidebar{
    position: relative;
    top: 0;
+}
 
+#icons{
+   color: grey ;
+   padding-left: 11px;
+   padding-top: 10px;
 }
 
 #user_email{
@@ -45,11 +52,10 @@
 }
 
 
-#side-text{
-   margin-left: 50px;
-}
+
 
 .active a{
    font-size: 20px;
    color: goldenrod !important;
 }
+

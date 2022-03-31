@@ -1,23 +1,38 @@
 <h2>Add Authors</h2>
-<table class="table table-striped">
 
+<%= form_with scope: :author, url: author_create_author_path(@author)  do |f| %>
+   <div>
+   <%= f.label :name%><br>
+   <%= f.text_field :name, class:"form-control w-25"%> 
+   <%=  f.submit 'add' , class: "btn btn-primary" %>
+   </div>
+<% end %>
+
+<br>
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">S.no</th>
       <th scope="col">Author</th>
-      <th scope="col">Action1</th>
-      <th scope="col">Action2</th>
-
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
-  <% count = 0 %>
-  <% @author.each do |author|  %>
+
+  <% @author.each_with_index do |author,index|  %>
     <tr>
-      <td><%= count += 1 %></td>
+      <td><%= index+1 %></td>
       <td><%= author.name %></td>
-      <td><%= link_to "Edit", edit_author_path(author) %></td>
-      <td><%= button_to "Delete",{action: :destroy, id: author.id}, method: :delete %></td>    
+      <td>
+        <%= link_to  edit_author_path(author) do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
+        <% end %>
+      </td>
+      <td>
+        <%= button_to "Delete",{action: :destroy, id: author.id}, method: :delete, class:"btn btn-danger"%>
+      </td>    
     </tr>
   <% end  %>
   </tbody>
@@ -25,12 +40,3 @@
 </table>
 
 
-<%= form_with scope: :author, url: author_create_author_path(@author)  do |f| %>
-   <p>
-   <%= f.label :name%><br>
-   <%= f.text_field :name %>
-   </p>
-    <p>
-     <%= f.submit 'add' %>
-   </p>
-<% end %>
