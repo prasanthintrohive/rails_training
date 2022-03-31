@@ -5,6 +5,7 @@ class BookController < ApplicationController
     end 
     def edit
         @book = Book.find(params[:id])
+        @author = Author.all
     end
     def create_book
         @book = Book.new(params.require(:book).permit(:title, :published_year, :author_id)) 

@@ -4,14 +4,15 @@
   <br>
 <div class= "row">
     <div class= "col-md-3">
-      <%= f.text_field :title, placeholder: 'Title', class:"form-control " %>
+      <%= f.text_field :title, placeholder: 'Title', class:"form-control "%>
     </div>  
     <div class= "col-md-3">
-      <%= f.text_field :published_year, placeholder: 'Published year', class:"form-control " %>
+      <%= f.select :published_year, 1999.. Date.today.year, 
+      {},  class: "form form-group form-control" %>
     </div>
     <div class= "col-md-3">
-      <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]}, 
-      {},  class: "form form-group form-control"  %>
+      <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]},
+      {},  class: " form-control"%>
     </div>
     <div class= "col-md-3">
       <%= f.submit 'add', class:"btn btn-secondary" %>
