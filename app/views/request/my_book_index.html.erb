@@ -1,14 +1,11 @@
 <table class="table table-striped">
-
   <thead>
     <tr>
       <th scope="col">S.no</th>
-      <th scope="col">Username</th>
       <th scope="col">Book Name</th>
       <th scope="col">Author Name</th>
       <th scope="col">Borrowed date</th>
       <th scope="col">Due date</th>
-      <th scope="col">Returned date</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
@@ -19,21 +16,16 @@
   <% @loanedbooks.each do |loaned_book|  %>
     <tr>
       <td><%= count += 1 %></td> 
-      <td><%= loaned_book.user.full_name %></td>
       <td><%= loaned_book.book.title %></td>
       <td><%= loaned_book.book.author.name %></td>
       <td><%= loaned_book.loaned_date.to_date %></td>
       <td><%= loaned_book.due_date.to_date %></td>
-      <td><%= loaned_book.returned_date&.to_date%></td>
       <td><%= loaned_book.status %></td>
-     <% if loaned_book.status == LoanedBook::STATUS[:pending]%>
-       <td><%= link_to "Approve",{"controller"=>"request", "action"=>"approve_to_borrow", id: loaned_book.id},method: :get, class: 'btn btn-primary'%></td>
-     <% elsif loaned_book.status == LoanedBook::STATUS[:verify]%>
-       <td><%= link_to "return approval",{"controller"=>"request", "action"=>"approve_to_return", id: loaned_book.id},method: :get, class: 'btn btn-primary'%></td>
-
-     <% else %>
-       <td></td>
-     <% end %>
+      <% if loaned_book.status == LoanedBook::STATUS[:approved] %>
+        <td><%= link_to 'RETURN', {controller: "request",action: "request_to_return", id: loaned_book.id }, method: :get ,class: "btn btn-primary" %></td>
+      <% else %>
+        <td></td>
+      <% end %>
     </tr>
   <% end  %>
 </tbody>

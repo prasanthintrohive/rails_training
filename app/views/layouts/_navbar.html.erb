@@ -15,11 +15,11 @@
             <li class="nav-item ">
               <a href="#" class="nav-link"></a>
             </li>
-            <li class="nav-item <%= active_class(home_borrow_path) %>">
-            <%= link_to 'Borrow book',home_borrow_path, class: 'nav-link'%>
+            <li class="nav-item <%= active_class(root_path) %>">
+            <%= link_to 'Borrow book',root_path, class: 'nav-link'%>
             </li>
-            <li class="nav-item <%= active_class(user_my_book_index_path) %>">
-            <%= link_to 'My book',user_my_book_index_path, class: 'nav-link '%>
+            <li class="nav-item <%= active_class(request_my_book_index_path) %>">
+            <%= link_to 'My book',request_my_book_index_path, class: 'nav-link '%>
             </li>
             <li class="nav-item <% active_class(home_history_path) %>" >
             <%= link_to 'History',home_history_path, class: 'nav-link '%>
