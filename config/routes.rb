@@ -4,9 +4,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "request#borrow"
-  # get 'request/borrow'
-  get 'home/my_book'
+
+
+  # root
+  root 'request#borrow'
+ 
   #author
   get '/author/:id/edit', to: 'author#edit', as: 'edit_author'
   patch 'author/:id/edit', to: 'author#update'
@@ -15,16 +17,21 @@ Rails.application.routes.draw do
   get '/book/:id/edit', to: 'book#edit', as: 'edit_book'
   patch 'book/:id/edit', to: 'book#update'
   delete '/book/:id', to: 'book#destroy'
+  
   get 'home/history'
-  # get 'home/borrow
+
   get 'admin/accept_request_index'
   get '/admin/borrow/:id' => 'request#approve_to_borrow'
   get '/admin/return/:id' => 'request#approve_to_return'
   get 'request/my_book_index'
+  #request path for borrow and return
   get '/request/borrow/:id' => 'request#request_to_borrow', as: 'borrow_user'
   get '/request/return/:id' => 'request#request_to_return'
+  #add book and author
   get 'author/add_author'
   get 'book/add_book'
+  #create author
   post 'author/create_author'
+  #create book
   post 'book/create_book'
 end
