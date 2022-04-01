@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "home#index"
-  get 'request/borrow'
+  root "request#borrow"
+  # get 'request/borrow'
   get 'home/my_book'
   #author
   get '/author/:id/edit', to: 'author#edit', as: 'edit_author'
