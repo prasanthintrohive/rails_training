@@ -14,23 +14,23 @@ class BookController < ApplicationController
             flash[:notice] =  "the book was created successfully "
         else 
             redirect_to book_add_book_path
-            flash[:alert] =  "book already present please enter correctly"
+            flash[:alert] =  @book.errors.full_messages&.join(', ')
         end
      end 
      def update 
         @book = Book.find(params[:id])
         if @book.update(params.require(:book).permit(:title, :published_year, :author_id))
-            flash[:success] = "book  successfully updated!"
+            flash[:notice] = "book  successfully updated!"
             redirect_to book_add_book_path
           else
-            flash.now[:error] = "Book item update failed"
+            flash.now[:alert] = @book.errors.full_messages&.join(', ')
             render :edit
         end
      end
     def destroy
         @book = Book.find(params[:id])
         @book.destroy
-        flash[:success] = "The book was successfully destroyed."
+        flash[:notice] = "The book was successfully destroyed."
         redirect_to book_add_book_path(@book)
     end 
 end

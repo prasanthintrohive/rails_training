@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
     def index
+        redirect_to home_borrow_path
     end
     def borrow
         @loanedbook = LoanedBook.all

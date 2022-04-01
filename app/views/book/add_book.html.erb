@@ -7,14 +7,14 @@
     </div>  
     <div class= "col-md-3">
       <%= f.select :published_year, 1999.. Date.today.year, 
-      {prompt: 'Select'},  class: "form form-group form-control" %>
+      {prompt: 'Select year'},  class: "form form-group form-control" %>
     </div>
     <div class= "col-md-3">
       <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]},
-       {prompt: 'Please select ...' },  class: " form-control"%>
+       {prompt: 'Select author' },  class: " form-control"%>
     </div>
     <div class= "col-md-3">
-      <%= f.submit 'add', class:"btn btn-secondary" %>
+      <%= f.submit 'Add', class:"btn btn-secondary" %>
     </div>      
 </div>
 <% end %>
