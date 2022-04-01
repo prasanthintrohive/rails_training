@@ -33,7 +33,7 @@
  } */
 #main-text{
    position: fixed;
-   left: 750px;
+   left: 950px;
    font-size: large;
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -42,12 +42,25 @@
    top: 0;
 }
 
+
+.log{
+   position: fixed;
+   right: 30px;
+}
+.log:hover{
+   size: 10px;
+   color: aliceblue;
+}
+
+
 #icons{
    color: grey ;
    padding-left: 11px;
    padding-top: 10px;
 }
-
+#icons:hover {
+    color: rgb(28, 163, 28);
+  }
 #user_email{
    font-size: 15px;
 }

@@ -1,8 +1,13 @@
 <nav class="navbar navbar-light bg-dark" id="con-1">
-    <div class="container-fluid" >
-    <strong id="main-text" style="color:white">
-    LIB - MANAGE
+    <div class="container-fluid">
+    <strong  style="color:white"  id="main-text">
+        LIB - MANAGE
     </strong>
+        <span class="log">
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do%>
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+            <% end %>
+        </span>
     <br><br>
     </div>
 </nav>

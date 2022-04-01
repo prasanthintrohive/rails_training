@@ -21,12 +21,12 @@
             <li class="nav-item <%= active_class(user_my_book_index_path) %>">
             <%= link_to 'My book',user_my_book_index_path, class: 'nav-link '%>
             </li>
-            <li class="nav-item <%= active_class(home_history_path) %>" >
+            <li class="nav-item <% active_class(home_history_path) %>" >
             <%= link_to 'History',home_history_path, class: 'nav-link '%>
 
             </li>
             <% if current_user.admin %>
-              <li class="nav-item <%= active_class(admin_accept_request_index_path)%>">
+              <li class="nav-item <% active_class(admin_accept_request_index_path)%>">
                 <%= link_to 'Book status',admin_accept_request_index_path, class: 'nav-link'%>
               </li>
               <li class="nav-item <%= active_class(author_add_author_path) %>">
@@ -36,16 +36,10 @@
                 <%= link_to 'Add Book',book_add_book_path, class: 'nav-link'%>
               </li>
             <% end %>
-
-
             <% if user_signed_in? %>
             <li class="nav-item <%= active_class(edit_user_registration_path) %>">
   
               <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link'%>
-            </li>
-               <li class="nav-item">
-              
-              <%= link_to 'log out', destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
             <% end %>
           </ul>
