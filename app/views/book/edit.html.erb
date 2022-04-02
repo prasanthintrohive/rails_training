@@ -10,7 +10,7 @@
         {},  class: "form form-group form-control" %>
       </div>
       <div class= "col-md-3">
-        <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]},
+        <%= f.select :author_id, @authors.collect {|author| [ author.name , author.id ]},
         {},  class: " form-control"%>
       </div>
       <div class= "col-md-3">

@@ -9,11 +9,10 @@
     </tr>
   </thead>
   <tbody>
-      <% count = 0 %>
-      <% @books.each do |book|  %>
+      <% @books.each_with_index do |book, count|  %>
       <% unless book.loaned_books.where(user_id: current_user.id).where("status != 'returned'").exists? %>
         <tr>
-          <td><%= count += 1 %></td>
+          <td><%= count  %></td>
           <td><%= book.title %></td>
           <td><%= book.author.name %></td>
           <td><%= link_to "Borrow", {controller: 'request', action: 'request_to_borrow', id: book.id} ,method: :get, class: 'btn btn-primary'%></td>
