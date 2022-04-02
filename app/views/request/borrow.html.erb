@@ -1,0 +1,24 @@
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">S.no</th>
+      <th scope="col">Book</th>
+      <th scope="col">Author</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% count = 0 %>
+      <% @books.each do |book|  %>
+      <% unless book.loaned_books.where(user_id: current_user.id).where("status != 'returned'").exists? %>
+        <tr>
+          <td><%= count += 1 %></td>
+          <td><%= book.title %></td>
+          <td><%= book.author.name %></td>
+          <td><%= link_to "Borrow", {controller: 'request', action: 'request_to_borrow', id: book.id} ,method: :get, class: 'btn btn-primary'%></td>
+        </tr>
+         <% end %>
+      <% end  %>
+  </tbody>
+</table>
