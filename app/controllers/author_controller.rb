@@ -1,11 +1,10 @@
 class AuthorController < ApplicationController
-  
+  before_action :get_author_id, only: [:update,:destroy,:edit]
     def add_author
         @author = Author.all
     end
     def edit
-        @author = Author.find(params[:id])
-     end
+    end
     def create_author
         @author = Author.new(params.require(:author).permit(:name)) 
         if @author.save
@@ -17,7 +16,6 @@ class AuthorController < ApplicationController
         end
      end
     def update
-        @author = Author.find(params[:id])
         if @author.update(params.require(:author).permit(:name))
             flash[:success] = "author successfully updated!"
             redirect_to author_add_author_path
@@ -27,9 +25,14 @@ class AuthorController < ApplicationController
         end
     end 
     def destroy
-        @author = Author.find(params[:id])
+       
         @author.destroy
         flash[:success] = "The author was successfully destroyed."
         redirect_to author_add_author_path(@author)
+    end
+
+    private
+    def get_author_id
+        @author = Author.find(params[:id])
     end
 end
