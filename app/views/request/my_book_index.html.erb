@@ -12,9 +12,9 @@
   </thead>
   <tbody>
 
-  <% @loanedbooks.each.with_index(1) do |loaned_book,index|  %>
+  <% @loanedbooks.each.with_index do |loaned_book,index|  %>
     <tr>
-      <td><%= index %></td> 
+      <td><%= index+1 %></td> 
       <td><%= loaned_book.book.title %></td>
       <td><%= loaned_book.book.author.name %></td>
       <td><%= loaned_book.loaned_date.to_date %></td>

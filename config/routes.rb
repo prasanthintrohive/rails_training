@@ -7,31 +7,42 @@ Rails.application.routes.draw do
 
 
   # root
+
   root 'request#borrow'
  
   #author
+
   get '/author/:id/edit', to: 'author#edit', as: 'edit_author'
   patch 'author/:id/edit', to: 'author#update'
   delete 'author/:id', to: 'author#destroy'
+
   #book
+
   get '/book/:id/edit', to: 'book#edit', as: 'edit_book'
   patch 'book/:id/edit', to: 'book#update'
   delete '/book/:id', to: 'book#destroy', as: 'destroy_book'
-  
-  get 'home/history'
-
+  get 'home/dashboard'
   get 'admin/accept_request_index'
   get '/admin/borrow/:id' => 'request#approve_to_borrow'
   get '/admin/return/:id' => 'request#approve_to_return'
   get 'request/my_book_index'
+
   #request path for borrow and return
+  
   get '/request/borrow/:id' => 'request#request_to_borrow', as: 'borrow_user'
   get '/request/return/:id' => 'request#request_to_return'
+  
   #add book and author
+  
   get 'author/add_author'
   get 'book/add_book'
+  
   #create author
+  
   post 'author/create_author'
+  
   #create book
+
   post 'book/create_book'
+
 end

@@ -9,15 +9,13 @@
     </tr>
   </thead>
   <tbody>
-      <% @books.each.with_index(1) do |book, index|  %>
+      <% @books.each_with_index do |book, index|  %>
       <% unless book.loaned_books.where(user_id: current_user.id).where("status != 'returned'").exists? %>
         <tr>
-          <td><%= index %></td>
+          <td><%= index+1%></td>
           <td><%= book.title %></td>
           <td><%= book.author.name %></td>
-          <td><%= link_to "Borrow", {controller: 'request', action: 'request_to_borrow', id: book.id} ,method: :get, class: 'btn btn-primary' do %>
-          <i class="fab fa-free-code-camp"></i>
-          <% end %>
+          <td><%= link_to "Borrow", {controller: 'request', action: 'request_to_borrow', id: book.id} ,method: :get, class: 'btn btn-primary'%>
           </td>
         </tr>
          <% end %>
