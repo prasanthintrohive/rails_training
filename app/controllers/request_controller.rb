@@ -13,6 +13,15 @@ class RequestController < ApplicationController
         @books = Book.all 
     end 
 
+    def search_book
+        if params[:query].blank?
+            redirect_to  root_path and return
+        else
+            @parameter = params[:query].downcase
+            @results = Book.all.where("lower(title) LIKE :query", query:"%#{@parameter}%")
+        end
+     end
+
 
     def request_to_borrow
         @loanedbook = LoanedBook.new
@@ -26,7 +35,7 @@ class RequestController < ApplicationController
         else 
             flash[:alert] =  @loanedbook.errors.full_messages&.join(', ')
         end
-        redirect_to request_borrow_path
+        redirect_to root_path
      end
 
 
@@ -60,6 +69,8 @@ class RequestController < ApplicationController
         redirect_to admin_accept_request_index_path
     end
 
+    
+
      private
 
      def ensure_admin
@@ -74,4 +85,6 @@ class RequestController < ApplicationController
      def get_book
         @book = Book.find(params[:id])
      end
+
+     
 end

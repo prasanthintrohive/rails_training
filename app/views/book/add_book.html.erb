@@ -1,4 +1,4 @@
-<h2>Add Book</h2>
+<h2>Add Book</h2>  
 <%= form_with  scope: :book, url: book_create_book_path(@book)  do |f| %>
   <br>
 <div class= "row">
@@ -7,11 +7,12 @@
     </div>  
     <div class= "col-md-3">
       <%= f.select :published_year, 1999.. Date.today.year, 
-      {prompt: 'Select year'},  class: "form form-group form-control" %>
+      {prompt: 'Select year'}, class: 'form-select', onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()' %>
     </div>
+
     <div class= "col-md-3">
       <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]},
-       {prompt: 'Select author' },  class: " form-control"%>
+       {prompt: 'Select author' },  class: " form-select", onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()'%>
     </div>
     <div class= "col-md-3">
       <%= f.submit 'Add', class:"btn btn-secondary" %>

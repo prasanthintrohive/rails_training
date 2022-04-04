@@ -18,6 +18,7 @@ class BookController < ApplicationController
         end
      end 
      def update 
+        @authors = Author.all
         if @book.update(params.require(:book).permit(:title, :published_year, :author_id))
             flash[:notice] = "book  successfully updated!"
             redirect_to book_add_book_path
