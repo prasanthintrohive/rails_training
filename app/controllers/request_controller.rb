@@ -26,7 +26,7 @@ class RequestController < ApplicationController
         else 
             flash[:alert] =  @loanedbook.errors.full_messages&.join(', ')
         end
-        redirect_to request_borrow_path
+        redirect_to request_my_book_index_path
      end
 
 

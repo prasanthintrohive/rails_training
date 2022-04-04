@@ -6,6 +6,7 @@ class BookController < ApplicationController
     end 
     
     def edit
+        @author = Author.all
     end
 
     def create_book

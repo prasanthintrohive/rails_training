@@ -15,10 +15,9 @@
   </thead>
   <tbody>
  
-  <% count = 0 %>
-  <% @loanedbooks.each do |loaned_book|  %>
+  <% @loanedbooks.each.with_index(1) do |loaned_book, index|  %>
     <tr>
-      <td><%= count += 1 %></td> 
+      <td><%= index %></td> 
       <td><%= loaned_book.user.full_name %></td>
       <td><%= loaned_book.book.title %></td>
       <td><%= loaned_book.book.author.name %></td>
