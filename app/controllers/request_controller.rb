@@ -3,7 +3,6 @@ class RequestController < ApplicationController
     before_action :ensure_admin, only: [:approve_to_return, :approve_to_borrow]
     before_action :get_book, only: [:request_to_borrow]
 
-
     def my_book_index
         @loanedbooks = LoanedBook.where(user_id: current_user.id).all
     end
@@ -12,7 +11,6 @@ class RequestController < ApplicationController
         @loanedbooks = LoanedBook.all
         @books = Book.all 
     end 
-
 
     def request_to_borrow
         @loanedbook = LoanedBook.new
@@ -27,8 +25,7 @@ class RequestController < ApplicationController
             flash[:alert] =  @loanedbook.errors.full_messages&.join(', ')
         end
         redirect_to request_my_book_index_path
-     end
-
+    end
 
     def request_to_return
         if @loanedbook.update(status: LoanedBook::STATUS[:verify])
