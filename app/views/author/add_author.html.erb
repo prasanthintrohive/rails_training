@@ -1,4 +1,16 @@
 <h2>Add Authors</h2>
+<%= form_with scope: :author, url: author_create_author_path(@author)  do |f| %>
+  <br>
+  <div class= "row">
+    <div class= "col-md-3">
+      <%= f.text_field :name, placeholder: 'Name', class:"form-control " %>
+    </div>  
+    <div class= "col-md-3">
+      <%= f.submit 'Add', class:"btn btn-secondary" %>
+    </div>    
+  </div>
+<% end %>
+<br>
 <table class="table table-striped">
 
   <thead>
@@ -16,21 +28,11 @@
     <tr>
       <td><%= count += 1 %></td>
       <td><%= author.name %></td>
-      <td><%= link_to "Edit", edit_author_path(author) %></td>
+      <td><%= link_to 'Edit', edit_author_path(author) %></td>
       <td><%= button_to "Delete",{action: :destroy, id: author.id}, method: :delete %></td>    
     </tr>
   <% end  %>
   </tbody>
-
 </table>
 
 
-<%= form_with scope: :author, url: author_create_author_path(@author)  do |f| %>
-   <p>
-   <%= f.label :name%><br>
-   <%= f.text_field :name %>
-   </p>
-    <p>
-     <%= f.submit 'add' %>
-   </p>
-<% end %>
