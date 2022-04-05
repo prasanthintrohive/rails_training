@@ -9,18 +9,9 @@ class RequestController < ApplicationController
     end
 
     def borrow
-        @loanedbooks = LoanedBook.all
-        @books = Book.all 
+        @search_keyword = params[:query]
+        @books, @loaned_books = Book.search(@search_keyword)
     end 
-
-    def search_book
-        if params[:query].blank?
-            redirect_to  root_path and return
-        else
-            @parameter = params[:query].downcase
-            @results = Book.all.where("lower(title) LIKE :query", query:"%#{@parameter}%")
-        end
-     end
 
 
     def request_to_borrow
