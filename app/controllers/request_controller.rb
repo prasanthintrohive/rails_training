@@ -3,7 +3,6 @@ class RequestController < ApplicationController
     before_action :ensure_admin, only: [:approve_to_return, :approve_to_borrow]
     before_action :get_book, only: [:request_to_borrow]
 
-
     def my_book_index
         @loanedbooks = LoanedBook.where(user_id: current_user.id).all
     end
@@ -28,7 +27,6 @@ class RequestController < ApplicationController
         end
         redirect_to root_path
      end
-
 
     def request_to_return
         if @loanedbook.update(status: LoanedBook::STATUS[:verify])
@@ -60,8 +58,6 @@ class RequestController < ApplicationController
         redirect_to admin_accept_request_index_path
     end
 
-    
-
      private
 
      def ensure_admin
@@ -76,6 +72,5 @@ class RequestController < ApplicationController
      def get_book
         @book = Book.find(params[:id])
      end
-
      
 end
