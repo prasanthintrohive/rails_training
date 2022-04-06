@@ -35,5 +35,4 @@ Rails.application.routes.draw do
   #create book
   post 'book/create_book'
 
-  get "/search" => 'request#search_book'
 end

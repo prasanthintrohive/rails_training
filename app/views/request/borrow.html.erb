@@ -1,7 +1,12 @@
-<%= form_with url: "/search", method: :get do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.text_field :query %>
-  <%= form.submit "Search" %>
+<%= form_with url: "/", method: :get do |form| %>
+  <div class= "row">
+    <div class= "col-md-3">
+      <%= form.text_field :query, value:@search_keyword,type:'search', class:'form-control', placeholder:'Search...' %>
+    </div>    
+    <div class= "col-md-3">
+      <%= form.submit "Search", class:'btn btn-secondary' %>
+    </div>    
+  </div>    
 <% end %>
 
 <table class="table table-striped">
