@@ -1,6 +1,7 @@
 class BookController < ApplicationController
     before_action :get_book_id, only: [:edit,:update,:destroy]
     def add_book 
+
         @book = Book.all 
         @author = Author.all
     end 
@@ -10,6 +11,7 @@ class BookController < ApplicationController
     end
 
     def create_book
+ 
         @book = Book.new(params.require(:book).permit(:title, :published_year, :author_id)) 
         if @book.save
             redirect_to book_add_book_path
@@ -31,7 +33,7 @@ class BookController < ApplicationController
     def destroy
      
         @book.destroy
-        flash[:success] = "The book was successfully destroyed."
+        flash[:notice] = "The book was successfully destroyed."
         redirect_to book_add_book_path(@book)
     end 
     

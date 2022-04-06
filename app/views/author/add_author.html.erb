@@ -35,7 +35,9 @@
         <% end %>
       </td>
       <td>
-        <%= button_to "Delete",{action: :destroy, id: author.id}, method: :delete, class:"btn btn-danger"%>
+        <%= link_to "/author/destroy_me/#{author.id}", data: { confirm: 'Are you sure?' , turbo: "false", id: author.id}, class:"trash" do%>
+          <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
+        <% end %>
       </td>    
     </tr>
   <% end  %>

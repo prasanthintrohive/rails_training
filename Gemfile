@@ -10,12 +10,18 @@ gem 'font-awesome-rails'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+
+gem 'jquery-rails'
 # Use sqlite3 as the database for Active Record
 # gem "sqlite3", "~> 1.4"
 gem 'pg'
 
+#chart
+gem "chartkick"
+gem 'chart-js-rails'
 
-
+#GroupBy
+gem "groupdate"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
