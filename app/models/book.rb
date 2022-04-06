@@ -9,7 +9,7 @@ class Book < ApplicationRecord
             books = Book.all 
             loanedbooks = LoanedBook.all
         else
-            books = Book.where("title ILIKE :query", query: "%#{keyword}%") .or(Book.where(author_id: keyword.to_i))
+            books = Book.where("title ILIKE :query", query: "%#{keyword}%") .or(Book.where(author_id: (Author.where("name ILIKE :query", query: "%#{keyword}%")).ids))
             loanedbooks = LoanedBook.where(book_id: books.select(:id))
         end
         [books, loanedbooks]
