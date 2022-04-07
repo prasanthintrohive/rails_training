@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   #book
   get '/book/:id/edit', to: 'book#edit', as: 'edit_book'
   patch 'book/:id/edit', to: 'book#update'
-  get '/book/:id/delete_book', to: 'book#delete_book'
+  get '/book/:id/delete_book', to: 'book#delete_book', as: 'delete_book'
   
   get 'home/history'
 

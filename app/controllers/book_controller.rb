@@ -31,7 +31,6 @@ class BookController < ApplicationController
         end
     end
     def delete_book
-        
         @book.is_deleted = true
         if @book.save
             flash[:notice] = "The book was successfully destroyed."

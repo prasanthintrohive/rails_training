@@ -46,8 +46,16 @@
           <td><%= index+1 %></td>
           <td><%= book.title %></td>
           <td><%= book.author.name %></td>
-          <td><%= link_to "Edit", edit_book_path(book) %></td>
-          <td><%= button_to "Delete",{action: :delete_book, id: book.id}, method: :get %></td>    
+          <td>
+            <%= link_to edit_book_path(book)do%>
+              <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to delete_book_path(book), data: { confirm: 'Are you sure?' , turbo: "false", id: book.id}, class:"trash" do%>
+              <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
+            <% end %>
+          </td>   
         </tr>
     <% end  %>
 
@@ -63,7 +71,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to '/book/:id/delete_book', data: { confirm: 'Are you sure?' , turbo: "false", id: book.id}, class:"trash" do%>
+              <%= link_to delete_book_path(book), data: { confirm: 'Are you sure?' , turbo: "false", id: book.id}, class:"trash" do%>
                 <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
               <% end %>
             </td>    
