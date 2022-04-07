@@ -1,4 +1,10 @@
 <h2>Add Book</h2>  
+<%= form_with url:'/book/add_book', method: :get do |form| %>
+  <%= form.check_box :show_deleted%>
+  <%= form.label :show_deleted, "Show deleted books" %>
+  <%= form.submit "Submit", class:'btn btn-secondary' %>
+<% end %>
+
 <%= form_with  scope: :book, url: book_create_book_path(@book)  do |f| %>
   <br>
 <div class= "row">
@@ -37,13 +43,25 @@
   <tbody>
   <% count = 0 %>
   <% @book.each do |book|  %>   
-    <tr>
-      <td><%= count += 1 %></td>
-      <td><%= book.title %></td>
-      <td><%= book.author.name %></td>
-      <td><%= link_to "Edit", edit_book_path(book) %></td>
-      <td><%= button_to "Delete",{action: :destroy, id: book.id}, method: :delete %></td>    
-    </tr>
+        <tr>
+          <td><%= count += 1 %></td>
+          <td><%= book.title %></td>
+          <td><%= book.author.name %></td>
+          <td><%= link_to "Edit", edit_book_path(book) %></td>
+          <td><%= button_to "Delete",{action: :delete_book, id: book.id}, method: :get %></td>    
+        </tr>
+    <% end  %>
+
+    <% if @value == '1'%>
+      <% @deleted_book.each do |book|  %>   
+          <tr class="table-secondary">
+            <td><%= count += 1 %></td>
+            <td><%= book.title %></td>
+            <td><%= book.author.name %></td>
+            <td><%= link_to "Edit", edit_book_path(book) %></td>
+            <td><%= button_to "Delete",{action: :delete_book, id: book.id}, method: :get %></td>    
+          </tr>
+      <% end  %>
     <% end  %>
   </tbody>
 </table>

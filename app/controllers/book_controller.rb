@@ -1,8 +1,11 @@
 class BookController < ApplicationController
-    before_action :get_book_id, only: [:edit,:update,:destroy]
+    before_action :get_book_id, only: [:edit,:update,:destroy, :delete_book]
     def add_book 
-        @book = Book.all 
         @author = Author.all
+        @book = Book.where(is_deleted: false) 
+        @deleted_book = Book.where(is_deleted: true)
+        @value = params[:show_deleted]
+        
     end 
     def edit
         @authors = Author.all
@@ -27,10 +30,14 @@ class BookController < ApplicationController
             render :edit
         end
     end
-    def destroy
-     
-        @book.destroy
-        flash[:notice] = "The book was successfully destroyed."
+    def delete_book
+        
+        @book.is_deleted = true
+        if @book.save
+            flash[:notice] = "The book was successfully destroyed."
+        else
+            @book.error.full_messages&.join(', ')
+        end
         redirect_to book_add_book_path(@book)
     end 
     
