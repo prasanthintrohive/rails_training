@@ -1,9 +1,10 @@
 <div class="container-fluid" id ="sidebar">
     <div class="row min-vh-100 flex-column flex-md-row">
       <aside class="col-12 col-md-3 col-xl-2 p-0 bg-dark ">
-        <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
+          <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top ">
           <div class="text-center p-1" id="side-text">
-           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap" ><strong><%= current_user.full_name.capitalize %></strong>
+           <img src="/assets/def_profile.jpeg" alt="profile" class="profile"><br>
+           <strong> <%= link_to current_user.full_name.capitalize ,root_path, class:'navbar-brand mx-0 font-weight-bold  text-nowrap'%></strong>
            <br><span class="text-muted" id="user_email"><%= current_user.email %></span>
            </a>
           </div>
@@ -23,7 +24,6 @@
             </li>
             <li class="nav-item <%= active_class(home_history_path) %>" >
             <%= link_to 'History',home_history_path, class: 'nav-link '%>
-
             </li>
             <% if current_user.admin %>
               <li class="nav-item <%= active_class(admin_accept_request_index_path)%>">
@@ -42,10 +42,6 @@
             <li class="nav-item <%= active_class(edit_user_registration_path) %>">
   
               <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link'%>
-            </li>
-               <li class="nav-item">
-              
-              <%= link_to 'log out', destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
             <% end %>
           </ul>
