@@ -16,49 +16,89 @@
 
  */
 
-
-
-
-
  .nav-bottom {
-    position: absolute;
-    bottom: 0;
-    
- }
- #edit-box{
-   margin-left:220px ;
- }
- /* .nav-sep {
-    background: none;
-    border-bottom: 1px solid #455a64;
-    color: #cfd8dc;
-    font-size: 14px;
-    padding: 26px 24px;
- } */
+   position: absolute;
+   bottom: 0;
+} 
+
 #main-text{
-   position: fixed;
-   left: 750px;
-   font-size: large;
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: fixed;
+  left: 950px;
+  font-size: large;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #sidebar{
-   position: relative;
-   top: 0;
-
+  position: relative;
+  top: 0;
 }
 
+
+.log{
+  position: fixed;
+  right: 30px;
+}
+.log:hover{
+  size: 10px;
+  color: aliceblue;
+}
+
+
+#icons{
+  color: grey ;
+  padding-left: 11px;
+  padding-top: 10px;
+}
+#icons:hover {
+   color: rgb(28, 163, 28);
+ }
 #user_email{
-   font-size: 15px;
+  font-size: 15px;
 }
 
-
-#side-text{
-   margin-left: 50px;
+#tableContainer{
+  overflow-y: scroll;
+  height: 50px;
 }
 
+#mychart{
+  height: 800px;
+
+}
 .active a{
-   font-size: 20px;
-   color: goldenrod !important;
+  font-size: 20px;
+  color: goldenrod !important;
+}
+
+#powericon{
+  color: grey;
+}
+#powericon:hover{
+  color: gold;
+}
+
+.profile{
+ vertical-align: middle;
+ width: 50px;
+ height: 50px;
+ border-radius: 50%;
+}
+.trash{
+  color: gray;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+.trash:hover{
+  color: red;
+}
+
+.add-icon{
+  height: 30px;
+}
+#con-1{
+  width: 100vw;
+  position:relative ;
+  right: 0;
+  top: 0;
 }
 
 
