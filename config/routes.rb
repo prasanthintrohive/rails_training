@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   #book
   get '/book/:id/edit', to: 'book#edit', as: 'edit_book'
   patch 'book/:id/edit', to: 'book#update'
-  get '/book/destroy_me/:id' => 'book#destroy'
+  get '/book/:id/delete_book', to: 'book#delete_book', as: 'delete_book'
   get 'home/dashboard'
+
 
   get 'admin/accept_request_index'
   get '/admin/borrow/:id' => 'request#approve_to_borrow'

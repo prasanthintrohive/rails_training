@@ -1,4 +1,10 @@
 <h2>Add Book</h2>  
+<%= form_with url:'/book/add_book', method: :get do |form| %>
+  <%= form.check_box :show_deleted%>
+  <%= form.label :show_deleted, "Show deleted books" %>
+  <%= form.submit "Submit", class:'btn btn-secondary' %>
+<% end %>
+
 <%= form_with  scope: :book, url: book_create_book_path(@book)  do |f| %>
   <br>
 <div class= "row">
@@ -33,25 +39,31 @@
 
     </tr>
   </thead>
-  <tbody id="table-row">
+<tbody id="table-row">
 
+<% @book.each_with_index do |book,index|  %>  
+        <% tr_class = book.is_deleted ? 'custom_colors' : ''%>
 
-  <% @book.each_with_index do |book,index|  %>
-    <tr >
-      <td><%= index+1 %></td>
-      <td><%= book.title %></td>
-      <td><%= book.author.name %></td>
-      <td>
-        <%= link_to edit_book_path(book)do%>
-          <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to "/book/destroy_me/#{book.id}", data: { confirm: 'Are you sure?' , turbo: "false", id: book.id}, class:"trash" do%>
-          <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
-        <% end %>
-      </td>    
-    </tr>
+        <tr class = "<%= tr_class %>">
+          <td><%= index+1 %></td>
+          <td><%= book.title %></td>
+          <td><%= book.author.name %></td>
+        <td>
+            <% unless book.is_deleted%>
+              <%= link_to edit_book_path(book)do%>
+                <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
+              <% end %>
+            <% end %>
+            
+          </td>
+          <td>
+          <% unless book.is_deleted%>
+            <%= link_to delete_book_path(book), data: { confirm: 'Are you sure?' , turbo: "false", id: book.id}, class:"trash" do%>
+              <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
+            <% end %>
+          <% end %>
+          </td>   
+        </tr>
     <% end  %>
   </tbody>
 
