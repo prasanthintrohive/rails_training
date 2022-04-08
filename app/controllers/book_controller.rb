@@ -40,6 +40,7 @@ class BookController < ApplicationController
         else
             @book.error.full_messages&.join(', ')
         end
+
         redirect_to book_add_book_path(@book)
     end 
     

@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   #author
   get '/author/:id/edit', to: 'author#edit', as: 'edit_author'
   patch 'author/:id/edit', to: 'author#update'
-  delete 'author/:id', to: 'author#destroy'
+  get '/author/destroy_me/:id' => 'author#destroy'
   #book
   get '/book/:id/edit', to: 'book#edit', as: 'edit_book'
   patch 'book/:id/edit', to: 'book#update'
   get '/book/:id/delete_book', to: 'book#delete_book', as: 'delete_book'
-  
-  get 'home/history'
+  get 'home/dashboard'
+
 
   get 'admin/accept_request_index'
   get '/admin/borrow/:id' => 'request#approve_to_borrow'
