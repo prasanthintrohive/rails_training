@@ -2,8 +2,11 @@ class BookController < ApplicationController
     before_action :get_book_id, only: [:edit,:update,:destroy, :delete_book]
     def add_book 
         @author = Author.all
-        @book = Book.where(is_deleted: false) 
-        @deleted_book = Book.where(is_deleted: true)
+        if params[:show_deleted] == '1'
+            @book = Book.all 
+        else
+            @book = Book.where(is_deleted: false)
+        end
         @value = params[:show_deleted]
         
     end 
