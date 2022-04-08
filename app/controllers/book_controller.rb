@@ -28,7 +28,6 @@ class BookController < ApplicationController
         end
     end
     def destroy
-     
         @book.destroy
         flash[:notice] = "The book was successfully destroyed."
         redirect_to book_add_book_path(@book)
