@@ -3,4 +3,15 @@ class HomeController < ApplicationController
         redirect_to home_borrow_path
     end
 
+    def dashboard
+        @loanedbooks = LoanedBook.where(user_id: current_user.id).all
+        @relation = @loanedbooks.where(created_at: 7.days.ago.beginning_of_day..Time.now)
+                                .group("created_at::date").count
+
+        @totalbooks = @loanedbooks.count
+        @pending_book = @loanedbooks.where(status:"returned").count
+        @returned_book = @loanedbooks.where(status:"pending").count
+        @values = [@totalbooks,@returned_book,@pending_book]
+    end
+
 end
