@@ -33,7 +33,7 @@ test:
   password:
   host: localhost
   database: introhive_test
-  port: 5432
+  port: 54321
 
 development:
   adapter: postgresql
@@ -43,4 +43,4 @@ development:
   database: introhive_dev_2021
   username: postgres
   password:
-  port: 5432
+  port: 54321
