@@ -10,19 +10,29 @@ class BookController < ApplicationController
         @value = params[:show_deleted]
         
     end 
+
+    def recieve
+       
+    end
+
     def edit
         @authors = Author.all
     end
+ 
     def create_book
-        @book = Book.new(params.require(:book).permit(:title, :published_year, :author_id)) 
+        @book = Book.new(params.require(:book).permit(:title, :published_year, :author_d)) 
         if @book.save
-            redirect_to book_add_book_path
-            flash[:notice] =  "the book was created successfully "
+            binding.pry
+            flash[:notice] =  "the book was created successfully"
+            redirect_to add_book_path
+            
         else 
-            redirect_to book_add_book_path
             flash[:alert] =  @book.errors.full_messages&.join(', ')
+            redirect_to add_book_path
+            
         end
      end 
+
      def update 
         @authors = Author.all
         if @book.update(params.require(:book).permit(:title, :published_year, :author_id))
@@ -41,7 +51,7 @@ class BookController < ApplicationController
             @book.error.full_messages&.join(', ')
         end
 
-        redirect_to book_add_book_path(@book)
+        redirect_to add_book_path(@book)
     end 
     
     private
