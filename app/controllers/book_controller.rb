@@ -11,25 +11,20 @@ class BookController < ApplicationController
         
     end 
 
-    def recieve
-       
-    end
 
     def edit
         @authors = Author.all
     end
  
     def create_book
-        @book = Book.new(params.require(:book).permit(:title, :published_year, :author_d)) 
+        @book = Book.new(params.require(:book).permit(:title, :published_year, :author_id)) 
         if @book.save
-            binding.pry
             flash[:notice] =  "the book was created successfully"
             redirect_to add_book_path
-            
         else 
+            binding.pry
             flash[:alert] =  @book.errors.full_messages&.join(', ')
             redirect_to add_book_path
-            
         end
      end 
 

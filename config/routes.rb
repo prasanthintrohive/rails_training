@@ -34,6 +34,6 @@ Rails.application.routes.draw do
   post 'author/create_author'
   #create book
   post '/create_book' => 'book#create_book' 
-  post '/recieve' => 'book#recieve' 
+
 
 end

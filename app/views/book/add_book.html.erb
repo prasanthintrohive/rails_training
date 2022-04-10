@@ -11,28 +11,23 @@
   <br>
 <div class= "row add-book">
     <div class= "col-md-3">
-      <%= f.text_field :title, placeholder: 'Title', class:"form-control book-title"%>
+      <%= f.text_field :title, placeholder: 'Title', class:"form-control ", id: "book-title"%>
     </div>  
     <div class= "col-md-3">
       <%= f.select :published_year, 1999.. Date.today.year, 
-      {prompt: 'Select year'}, class: 'form-select book-year', onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()' %>
+      {},  class: "form form-group form-control", id: 'book-year' %>
+    </div>
+    <div class= "col-md-3">
+      <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]},
+      {},  class: " form-control",  id: 'book-author'%>
     </div>
 
     <div class= "col-md-3">
-      <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]},
-       {prompt: 'Select author' },  class: "form-select", onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()'%>
-    </div>
-    <div class= "col-md-3">
-      <%= f.submit "add" %>
-      <span class = 'add-ajax-link' style="cursor:pointer"> 
-        <img src="/assets/add-book.png" class="add-icon"><img/>
+      <%= f.submit "addS" %>
+       <span class = 'add-ajax-link' style="cursor:pointer"> 
+          <img src="/assets/add-book.png" class="add-icon"><img/>
       </span>  
-    </div>    
-    <div class= "col-md-3">
-      <h1 class ="test">
-        Testing
-      </h1>
-    </div>
+    </div> 
 </div>
 <% end %>
 <br><br>
