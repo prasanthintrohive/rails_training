@@ -1,19 +1,5 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<%= javascript_include_tag 'book_index', 'data-turbolinks-track': 'reload' %>
 <h2>Add Book</h2>  
-<%= form_with url:'/book/add_book', method: :get do |form| %>
-  <%= form.check_box :hide_deleted, class: 'submit-on-change'%>
-  <%= form.check_box :show_deleted, class: 'submit-on-change'%>
-  <%= form.label :show_deleted, "Show deleted books" %>
-<% end %>
-
-<script>
-document.addEventListener('change', function(e){
-  if (e.target.matches('.submit-on-change') && e.target.form){
-    e.target.form.submit();
-  }
-});
-</script>
-
 
 <%= form_with  scope: :book, url: book_create_book_path(@book)  do |f| %>
   <br>
@@ -36,6 +22,10 @@ document.addEventListener('change', function(e){
 </div>
 <% end %>
 <br><br>
+<%= form_with url:'/book/add_book', method: :get do |form| %>
+  <%= form.check_box :show_deleted, class: 'submit-on-change'%>
+  <%= form.label :show_deleted, "Show deleted books" %>
+<% end %> <br>
 
 
 <table class="table table-striped table-bordered table-md overflow-auto" id="add-table">
