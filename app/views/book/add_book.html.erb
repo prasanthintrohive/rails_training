@@ -24,10 +24,8 @@
 <% end %>
 <br><br>
 <div class= 'con-2'>
-  <%= form_with url:'/book/add_book', method: :get do |form| %>
-    <%= form.check_box :show_deleted %>
-    <%= form.label :show_deleted, "Show deleted books" %>
-  <% end %> <br>
+  <%= check_box_tag 'show_deleted', 'no',false, class: "deleted" %>
+  <%= label_tag 'show_deleted', 'show deleted books'%>
 </div>
 
 <table class="table table-striped table-bordered table-md overflow-auto" id="add-table">
