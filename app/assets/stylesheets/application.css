@@ -100,7 +100,12 @@
   right: 0;
   top: 0;
 }
-
+.con-2{
+  font-weight: 600;
+  top: 15%;
+  left: 75%;
+  position: absolute;
+}
 .custom_colors{
   background-color: rgb(213, 193, 193);
 }
