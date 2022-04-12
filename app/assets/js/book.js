@@ -8,20 +8,16 @@ jQuery(document).ready(function () {
             url: "create_book",
             data: {book:{title:title, author_id:author, published_year :year}},
             success: function(data, textStatus, jqXHR){
-                jQuery('.add-book #test').text('Tested');
-                jQuery('.add-book #book-author').val("Select year");
-                jQuery('.add-book #book-year').val("Select author");
-                console.log("Hey")
+                $('.add-book #book-title').val("");
+                jQuery("#add-table").prepend(
+                    data
+                )
+                console.log(data)
             },
             error: function(jqXHR, textStatus, errorThrown){
-                alert("failsed")
+                alert("failed")
             }
           })
       return false;
     })
-
-
-
-
-
 }) 
