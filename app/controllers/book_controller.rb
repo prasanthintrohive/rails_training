@@ -1,16 +1,22 @@
 class BookController < ApplicationController
     before_action :get_book_id, only: [:edit,:update,:destroy, :delete_book]
     def add_book 
-        @author = Author.all
-        @book = Book.all 
+        @authors = Author.all
+        @books = Book.where(is_deleted: false)
         @value = params[:show_deleted]
         
     end 
     def checkbox
+        @value = params[:show_deleted]
+        if @value == 'true'
+            books = Book.all
+        else
+            books = Book.where(is_deleted: false)
+        end 
         respond_to do |format|
-            format.html { render partial: 'show_deleted'}
+            format.html { render partial: 'show_deleted', locals: {books: books}}
             format.js
-          end
+        end
     end
     def edit
         @authors = Author.all

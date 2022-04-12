@@ -1,1 +1,35 @@
-<h1>It is partial file </h1>
+<table class="table  table-bordered table-md overflow-auto" id="add-table">
+  <thead>
+    <tr>
+      <th scope="col">S.no</th>
+      <th scope="col">Book</th>
+      <th scope="col">Author</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+<tbody id="table-row">
+
+<% books.each_with_index do |book,index|  %>  
+        <% tr_class = book.is_deleted ? 'custom_colors' : ''%>
+
+        <tr class = "<%= tr_class %>">
+          <td><%= index+1 %></td>
+          <td><%= book.title %></td>
+          <td><%= book.author.name %></td>
+        <td>
+            <% unless book.is_deleted%>
+              <%= link_to edit_book_path(book)do%>
+                <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
+              <% end %>
+            <% end %>
+            
+          <% unless book.is_deleted%>
+            <%= link_to delete_book_path(book), data: { confirm: 'Are you sure?' , turbo: "false", id: book.id}, class:"trash" do%>
+              <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
+            <% end %>
+          <% end %>
+          </td>   
+        </tr>
+    <% end  %>
+  </tbody>
+</table>

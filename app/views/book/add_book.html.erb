@@ -1,7 +1,7 @@
 <%= javascript_include_tag 'book_index', 'data-turbolinks-track': 'reload' %>
 <h2>Add Book</h2>  
 
-<%= form_with  scope: :book, url: book_create_book_path(@book)  do |f| %>
+<%= form_with  scope: :book, url: book_create_book_path(@books)  do |f| %>
   <br>
 <div class= "row">
     <div class= "col-md-3">
@@ -13,7 +13,7 @@
     </div>
 
     <div class= "col-md-3">
-      <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]},
+      <%= f.select :author_id, @authors.collect {|author| [ author.name , author.id ]},
        {prompt: 'Select author' },  class: " form-select", onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()'%>
     </div>
     <div class= "col-md-3">
@@ -23,44 +23,10 @@
 <% end %>
 <br><br>
 <div class= 'con-2'>
-  <%= check_box_tag 'show_deleted', 'no',false, class: "deleted" %>
+  <%= check_box_tag 'show_deleted','no', false, class: "deleted" %>
   <%= label_tag 'show_deleted', 'show deleted books'%>
 </div>
 
 
-<table class="table table-striped table-bordered table-md overflow-auto" id="add-table">
-  <thead>
-    <tr>
-      <th scope="col">S.no</th>
-      <th scope="col">Book</th>
-      <th scope="col">Author</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-<tbody id="table-row">
 
-<% @book.each_with_index do |book,index|  %>  
-        <% tr_class = book.is_deleted ? 'custom_colors' : ''%>
-
-        <tr class = "<%= tr_class %>">
-          <td><%= index+1 %></td>
-          <td><%= book.title %></td>
-          <td><%= book.author.name %></td>
-        <td>
-            <% unless book.is_deleted%>
-              <%= link_to edit_book_path(book)do%>
-                <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
-              <% end %>
-            <% end %>
-            
-          <% unless book.is_deleted%>
-            <%= link_to delete_book_path(book), data: { confirm: 'Are you sure?' , turbo: "false", id: book.id}, class:"trash" do%>
-              <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
-            <% end %>
-          <% end %>
-          </td>   
-        </tr>
-    <% end  %>
-  </tbody>
-
-</table>
+  <%= render partial: 'show_deleted',locals: {books:@books} %>
