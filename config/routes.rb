@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   #create book
   post 'book/create_book'
 
+  get '/show_deleted' => 'book#checkbox'
+
 end
