@@ -14,7 +14,7 @@ class BookController < ApplicationController
             books = Book.where(is_deleted: false)
         end 
         respond_to do |format|
-            format.html { render partial: 'show_deleted', locals: {books: books}}
+            format.html { render partial: 'books_table', locals: {books: books}}
             format.js
         end
     end
