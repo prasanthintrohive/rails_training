@@ -1,20 +1,18 @@
 jQuery(document).ready(function () {
-    jQuery(document).on("click", '.add-ajax-link', function(){
-        var title = $('.add-book #book-title').val();
-        var author = $('#book-author').val();
-        var year = $('#book-year').val();
+    jQuery(document).on("click", '.btn', function(){
+        var name = $('.form-control').val();
         $.ajax({
             type: "post", 
-            url: "create_book",
-            data: {book:{title:title, author_id:author, published_year :year}},
+            url: "create_author",
+            data: {author:{name: name}},
             success: function(data, textStatus, jqXHR){
-                $('.add-book #book-title').val("");
-                jQuery("#add-table").prepend(
+                jQuery('#auth_name').val("");
+                jQuery("#author_row").prepend(
                     data
                 );
                 jQuery.gritter.add({
                     title: 'Notification',
-                    text: "Book is Added",
+                    text: "New Author is Added to the List",
                     sticky: false
                 })
                 console.log(data)

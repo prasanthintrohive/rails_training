@@ -8,9 +8,7 @@ class BookController < ApplicationController
             @book = Book.where(is_deleted: false)
         end
         @value = params[:show_deleted]
-        
-    end 
-
+    end
 
     def edit
         @authors = Author.all
@@ -21,7 +19,6 @@ class BookController < ApplicationController
         if @book.save
             respond_to do |format|
                 format.html { render partial: 'book_row', locals:{book: @book} }
-                format.js
               end
         else 
             flash[:alert] =  @book.errors.full_messages&.join(', ')

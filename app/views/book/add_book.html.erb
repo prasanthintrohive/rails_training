@@ -1,5 +1,6 @@
 <%= javascript_include_tag 'book', "data-turbo-track": "reload" %>
 
+
 <h2>Add Book</h2>  
 <%= form_with url:'/add_book', method: :get do |form| %>
   <%= form.check_box :show_deleted%>
@@ -45,8 +46,8 @@
   </thead>
 <tbody id="table-row">
 <% @book.each_with_index do |book,index|  %>  
-  <%= render partial: "book_row", locals: { book: book } %>
-  <% end  %>
+  <%= render partial: "book_row", locals: { book: book} %>
+<% end  %>
 </tbody>
 
 </table>

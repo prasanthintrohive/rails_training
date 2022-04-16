@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag 'application', "data-turbo-track": "reload"  %>
     <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -30,7 +28,6 @@
           <div>
           <div class="container">
           <br>
-            <%=render "layouts/notification"%>
             <%= yield %>
           </div>
           
@@ -45,7 +42,7 @@
 
   </body>
 
- 
+ <%= js add_gritter(flash[:notice], :title => "Notifications", :sticky => true, :time => 500) %>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
