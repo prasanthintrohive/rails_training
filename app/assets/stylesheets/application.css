@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require gritter 
 
  */
 
@@ -105,5 +106,13 @@
   background-color: rgb(172 164 164);
 }
 
+.custom_colors{
+  display: none;
+}
 
-
+.custom_gritter {
+  background-color: green;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid white;
+}

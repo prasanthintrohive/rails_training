@@ -8,12 +8,13 @@ class AuthorController < ApplicationController
     def create_author
         @author = Author.new(params.require(:author).permit(:name)) 
         if @author.save
-            flash[:notice] =  "the author was created successfully "
-            redirect_to author_add_author_path
-        else 
-            redirect_to author_add_author_path
-            flash[:alert] =  @author.errors.full_messages&.join(', ')
+            respond_to do |format|
+                format.html {render partial:"author_row", locals:{author: @author} }
+            end
+        else
+            render json: {message: @author.errors.full_messages&.join(', ')}, status: :bad_request
         end
+
      end
     def update
         if @author.update(params.require(:author).permit(:name))

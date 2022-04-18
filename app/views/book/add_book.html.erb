@@ -1,28 +1,33 @@
+<%= javascript_include_tag 'book', "data-turbo-track": "reload" %>
+
+
 <h2>Add Book</h2>  
-<%= form_with url:'/book/add_book', method: :get do |form| %>
+<%= form_with url:'/add_book', method: :get do |form| %>
   <%= form.check_box :show_deleted%>
   <%= form.label :show_deleted, "Show deleted books" %>
   <%= form.submit "Submit", class:'btn btn-secondary' %>
 <% end %>
 
-<%= form_with  scope: :book, url: book_create_book_path(@book)  do |f| %>
+<%= form_with  scope: :book, url: create_book_path(@book)  do |f| %>
   <br>
-<div class= "row">
+<div class= "row add-book">
     <div class= "col-md-3">
-      <%= f.text_field :title, placeholder: 'Title', class:"form-control "%>
+      <%= f.text_field :title, placeholder: 'Title', class:"form-control ", id: "book-title"%>
     </div>  
     <div class= "col-md-3">
       <%= f.select :published_year, 1999.. Date.today.year, 
-      {prompt: 'Select year'}, class: 'form-select', onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()' %>
+      {prompt: 'Select year'}, class: 'form-select ', onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()', id: 'book-year' %>
     </div>
 
     <div class= "col-md-3">
       <%= f.select :author_id, @author.collect {|author| [ author.name , author.id ]},
-       {prompt: 'Select author' },  class: " form-select", onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()'%>
+       {prompt: 'Select author' },  class: "form-select", onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()', id:'book-author'%>
     </div>
     <div class= "col-md-3">
-      <%= f.submit 'Add', class:"btn btn-secondary" %>
-    </div>      
+      <span class = 'add-ajax-link' style="cursor:pointer"> 
+        <img src="/assets/add-book.png" class="add-icon"><img/>
+      </span>  
+    </div>  
 </div>
 <% end %>
 <br><br>
@@ -40,31 +45,9 @@
     </tr>
   </thead>
 <tbody id="table-row">
-
-<% @book.each_with_index do |book,index|  %>  
-        <% tr_class = book.is_deleted ? 'custom_colors' : ''%>
-
-        <tr class = "<%= tr_class %>">
-          <td><%= index+1 %></td>
-          <td><%= book.title %></td>
-          <td><%= book.author.name %></td>
-        <td>
-            <% unless book.is_deleted%>
-              <%= link_to edit_book_path(book)do%>
-                <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
-              <% end %>
-            <% end %>
-            
-          </td>
-          <td>
-          <% unless book.is_deleted%>
-            <%= link_to delete_book_path(book), data: { confirm: 'Are you sure?' , turbo: "false", id: book.id}, class:"trash" do%>
-              <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
-            <% end %>
-          <% end %>
-          </td>   
-        </tr>
-    <% end  %>
-  </tbody>
+<% @book.each do |book|  %>  
+  <%= render partial: "book_row", locals: { book: book} %>
+<% end  %>
+</tbody>
 
 </table>
