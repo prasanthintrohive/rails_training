@@ -45,7 +45,7 @@
     </tr>
   </thead>
 <tbody id="table-row">
-<% @book.each_with_index do |book,index|  %>  
+<% @book.each do |book|  %>  
   <%= render partial: "book_row", locals: { book: book} %>
 <% end  %>
 </tbody>

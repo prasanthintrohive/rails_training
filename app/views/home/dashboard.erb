@@ -1,34 +1,12 @@
 <div class="row">
+<%= line_chart @relation.group_by_day(:created_at, format: "%a").count, width: "600px", height: "250px" , colors: ['green','blue']%>
 <div class="col">
-    <canvas id="myChart" width="300" height="150"></canvas>
-</div>
-<div class="col">
-    <canvas id="mChart" width="300" height="150"></canvas>
+    <canvas id="mChart"width="300" height="150"></canvas>
 </div>
 
 </div>
 <script>
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: <%= @relation.keys.map {|kk| kk.strftime("%A")}.to_json.html_safe %>,
-        datasets: [{
-            label: "Your Relatoion with us",
-            data: <%= @relation.values.to_json.html_safe %>,
-            backgroundColor: [
-                'rgba(54, 162, 235, 0.2)',],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
+
 
 
 var xValues = ["Loaned-Books", "Returned-Book", "Pending-book"];
@@ -55,7 +33,7 @@ new Chart("mChart", {
     }
   }
 });
+
+
 </script>
-
-
 

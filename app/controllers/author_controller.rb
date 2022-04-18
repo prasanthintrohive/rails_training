@@ -11,10 +11,10 @@ class AuthorController < ApplicationController
             respond_to do |format|
                 format.html {render partial:"author_row", locals:{author: @author} }
             end
-        else 
-            redirect_to author_add_author_path
-            flash[:alert] =  @author.errors.full_messages&.join(', ')
+        else
+            render json: {message: @author.errors.full_messages&.join(', ')}, status: :bad_request
         end
+
      end
     def update
         if @author.update(params.require(:author).permit(:name))

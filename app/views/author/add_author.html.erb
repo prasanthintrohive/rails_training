@@ -2,7 +2,7 @@
 
 <h2>Add Authors</h2>
 
-<%= form_with scope: :author, url:create_author_path(@author)  do |f| %>
+<%= form_with  url:create_author_path do |f| %>
   <br>
   <div class= "row">
     <div class= "col-md-3">
@@ -26,7 +26,7 @@
   </thead>
   <tbody>
 
-  <% @author.each_with_index do |author,index|  %>
+  <% @author.each do |author|  %>
   <%= render partial:'author_row', locals: {author: author} %>
   <% end  %>
 

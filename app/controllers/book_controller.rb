@@ -21,8 +21,7 @@ class BookController < ApplicationController
                 format.html { render partial: 'book_row', locals:{book: @book} }
               end
         else 
-            flash[:alert] =  @book.errors.full_messages&.join(', ')
-            redirect_to add_book_path
+            render json:{message: @book.errors.full_messages&.join(', ')}, status: :bad_request
         end
      end 
 
