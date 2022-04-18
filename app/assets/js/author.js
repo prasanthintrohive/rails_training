@@ -1,5 +1,5 @@
 jQuery(document).ready(function () {
-    jQuery(document).on("click", '.btn', function(){
+    jQuery(document).on("click", '#add_btn', function(){
         var name = $('.form-control').val();
         if(name == ""){
             jQuery.gritter.add({

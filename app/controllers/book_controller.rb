@@ -14,7 +14,6 @@ class BookController < ApplicationController
         end 
         respond_to do |format|
             format.html { render partial: 'books_table', locals: {books: books}}
-            format.js
         end
     end
     def edit

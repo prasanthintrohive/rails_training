@@ -8,7 +8,6 @@ class AuthorController < ApplicationController
     def ajax_edit
         respond_to do |format|
             format.html { render partial: 'edit_author', locals: {authors: @author}}
-            format.js
         end
     end
     def create_author
