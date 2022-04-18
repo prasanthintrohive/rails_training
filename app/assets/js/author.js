@@ -7,7 +7,7 @@ jQuery(document).ready(function () {
                 text: "Fill your column and Try again later",
                 sticky: false
                 });
-                return;
+                return false;
         }
         $.ajax({
             type: "post", 

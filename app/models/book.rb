@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
     belongs_to :author
-    has_many :loaned_books
+    has_many :loaned_books, dependent: :destroy
     validates :title, presence: true, uniqueness: { case_sensitive: true }
     validates :published_year, presence:true
 
