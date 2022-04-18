@@ -7,6 +7,7 @@ jQuery(document).ready(function () {
                 text: "Fill your column and Try again later",
                 sticky: false
                 });
+                $('.form-control').css("border", "1px solid red");
         return false
         }
         $.ajax({
@@ -21,6 +22,8 @@ jQuery(document).ready(function () {
                 text: "New Author is Added to the List",
                 sticky: false
             });
+            $('.form-control').css("border",'1px solid #ced4da')
+            
         }  
             ,
             error: function(jqXHR, textStatus, errorThrown){
@@ -29,6 +32,7 @@ jQuery(document).ready(function () {
                     text: jqXHR.responseJSON.message,
                     sticky: false
                 });
+                $('.form-control').css("border", "1px solid red");
             }
           })
     return false;
