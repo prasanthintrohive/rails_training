@@ -1,19 +1,19 @@
 <%= javascript_include_tag 'author_index', 'data-turbolinks-track': 'reload' %>
-<%= form_with scope: :author, url: author_create_author_path(@author)  do |f| %>
+<%= javascript_include_tag 'author', "data-turbo-track": "reload" %>
+<%= form_with  url:create_author_path do |f| %>
   <br>
   <div class= "row">
-
     <div class= "col-md-3">
-      <%= f.text_field :name, placeholder: 'Name', class:"form-control " %>
+      <%= f.text_field :name, placeholder: 'Name', class:"form-control", id:'auth_name'%>
     </div>  
     <div class= "col-md-3">
-      <%= f.submit 'add', class:"btn btn-secondary" %>
+      <button class="btn btn-secondary btn">Add</button>
     </div>    
   </div>
 <% end %>
 <br>
 
-<table class="table table-striped table-bordered table-md overflow-auto" style="height:100px" >
+<table class="table table-striped table-bordered table-md overflow-auto" style="height:100px" id = "author_row">
   <thead>
     <tr>
       <th scope="col">S.no</th>
@@ -23,23 +23,10 @@
     </tr>
   </thead>
   <tbody>
-
-  <% @authors.each_with_index do |author,index|  %>
-    <tr id= <%= author.id%>>
-      <td><%= index+1 %></td>
-      <td><%= author.name %></td>
-      <td id= 'edit_author', data-auth-id= <%= author.id%>>
-        <%= link_to  do %>
-          <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to "/author/destroy_me/#{author.id}", data: { confirm: 'Are you sure?' , turbo: "false", id: author.id}, class:"trash" do%>
-          <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
-        <% end %>
-      </td>    
-    </tr>
+  <% @authors.each do |author|  %>
+  <%= render partial:'author_row', locals: {author: author} %>
   <% end  %>
+
   </tbody>
 </table>
 

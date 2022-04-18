@@ -29,14 +29,12 @@ Rails.application.routes.draw do
   get '/request/return/:id' => 'request#request_to_return'
   #add book and author
   get 'author/add_author'
-  get 'book/add_book'
+  get '/add_book' => 'book#add_book'
   #create author
-  post 'author/create_author'
+  post 'author/create_author'=> 'author#create_author', as: 'create_author'
   #create book
-  post 'book/create_book'
-
+  post '/create_book' => 'book#create_book' 
   get '/show_deleted' => 'book#checkbox'
   get 'author/ajax_edit/:id' ,to: 'author#ajax_edit', as: 'ajax_edit'
   patch 'author/ajax_edit/:id', to: 'author#update'
-
 end

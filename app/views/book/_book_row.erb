@@ -1,0 +1,21 @@
+
+  <% tr_class = book.is_deleted ? 'custom_colors' : ''%>
+    <tr class = "<%= tr_class %>">
+      <td><%= book.id%></td>
+      <td><%= book.title %></td>
+      <td><%= book.author.name %></td>
+    <td>
+      <% unless book.is_deleted%>
+        <%= link_to edit_book_path(book)do%>
+          <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% unless book.is_deleted%>
+        <%= link_to delete_book_path(book), data: { turbo: "false", id: book.id}, class:"trash" do%>
+          <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
+        <% end %>
+      <% end %>
+    </td>   
+  </tr>

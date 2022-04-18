@@ -1,24 +1,26 @@
 <%= javascript_include_tag 'book_index', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'book', "data-turbo-track": "reload" %>
 <h2>Add Book</h2>  
-
-<%= form_with  scope: :book, url: book_create_book_path(@books)  do |f| %>
+<%= form_with  scope: :book, url: create_book_path(@book)  do |f| %>
   <br>
-<div class= "row">
+<div class= "row add-book">
     <div class= "col-md-3">
-      <%= f.text_field :title, placeholder: 'Title', class:"form-control "%>
+      <%= f.text_field :title, placeholder: 'Title', class:"form-control ", id: "book-title"%>
     </div>  
     <div class= "col-md-3">
       <%= f.select :published_year, 1999.. Date.today.year, 
-      {prompt: 'Select year'}, class: 'form-select', onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()' %>
+      {prompt: 'Select year'}, class: 'form-select ', onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()', id: 'book-year' %>
     </div>
 
     <div class= "col-md-3">
       <%= f.select :author_id, @authors.collect {|author| [ author.name , author.id ]},
-       {prompt: 'Select author' },  class: " form-select", onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()'%>
+       {prompt: 'Select author' },  class: "form-select", onfocus: 'this.size=5', onblur:'this.size=1', onchange:'this.size=1, this.blur()', id:'book-author'%>
     </div>
     <div class= "col-md-3">
-      <%= f.submit 'Add', class:"btn btn-secondary" %>
-    </div>      
+      <span class = 'add-ajax-link' style="cursor:pointer"> 
+        <img src="/assets/add-book.png" class="add-icon"><img/>
+      </span>  
+    </div>  
 </div>
 <% end %>
 <br><br>
@@ -26,7 +28,6 @@
   <%= check_box_tag 'show_deleted','no', false, class: "deleted" %>
   <%= label_tag 'show_deleted', 'show deleted books'%>
 </div>
-
 
 
   <%= render partial: 'books_table',locals: {books:@books} %>

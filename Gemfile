@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source "http://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.1"
 #binding.pry
@@ -14,7 +14,11 @@ gem "sprockets-rails"
 gem 'jquery-rails'
 gem 'delayed_job_active_record'
 
+gem "gritter", "1.2.0"
+
 gem 'pg'
+
+gem 'sass-rails'
 
 gem "chartkick"
 gem 'chart-js-rails'
