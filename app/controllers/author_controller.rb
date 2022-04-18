@@ -1,9 +1,14 @@
 class AuthorController < ApplicationController
-  before_action :get_author_id, only: [:update,:destroy,:edit]
+  before_action :get_author_id, only: [:update,:destroy,:edit, :ajax_edit]
     def add_author
-        @author = Author.all
+        @authors = Author.all
     end
     def edit
+    end
+    def ajax_edit
+        respond_to do |format|
+            format.html { render partial: 'edit_author', locals: {authors: @author}}
+        end
     end
     def create_author
         @author = Author.new(params.require(:author).permit(:name)) 

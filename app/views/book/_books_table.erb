@@ -1,0 +1,15 @@
+<table class="table  table-bordered table-md overflow-auto" id="add-table">
+  <thead>
+    <tr>
+      <th scope="col">S.no</th>
+      <th scope="col">Book</th>
+      <th scope="col">Author</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody id="table-row">
+  <% books.each do |book|  %>  
+    <%= render partial: "book_row", locals: { book: book} %>
+  <% end  %>
+  </tbody>
+</table>

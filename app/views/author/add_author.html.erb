@@ -1,7 +1,5 @@
+<%= javascript_include_tag 'author_index', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'author', "data-turbo-track": "reload" %>
-
-<h2>Add Authors</h2>
-
 <%= form_with  url:create_author_path do |f| %>
   <br>
   <div class= "row">
@@ -9,7 +7,7 @@
       <%= f.text_field :name, placeholder: 'Name', class:"form-control", id:'auth_name'%>
     </div>  
     <div class= "col-md-3">
-      <button class="btn btn-secondary btn">Add</button>
+      <button class="btn btn-secondary btn" id='add_btn'>Add</button>
     </div>    
   </div>
 <% end %>
@@ -25,10 +23,11 @@
     </tr>
   </thead>
   <tbody>
-
-  <% @author.each do |author|  %>
+  <% @authors.each do |author|  %>
   <%= render partial:'author_row', locals: {author: author} %>
   <% end  %>
 
   </tbody>
 </table>
+
+<div id= 'new-render'></div>
