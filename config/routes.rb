@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   post 'author/create_author'=> 'author#create_author', as: 'create_author'
   #create book
   post '/create_book' => 'book#create_book' 
-  get '/show_deleted' => 'book#checkbox'
+  get '/show_deleted' => 'book#show_deleted'
   get 'author/ajax_edit/:id' ,to: 'author#ajax_edit', as: 'ajax_edit'
   patch 'author/ajax_edit/:id', to: 'author#update'
 end

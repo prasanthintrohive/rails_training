@@ -5,7 +5,7 @@ class BookController < ApplicationController
         @books = Book.where(is_deleted: false)
         @value = params[:show_deleted]      
     end 
-    def checkbox
+    def show_deleted
         @value = params[:show_deleted]
         if @value == 'true'
             books = Book.all
