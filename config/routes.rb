@@ -36,5 +36,7 @@ Rails.application.routes.draw do
   post 'book/create_book'
 
   get '/show_deleted' => 'book#checkbox'
+  get 'author/ajax_edit/:id' ,to: 'author#ajax_edit', as: 'ajax_edit'
+  patch 'author/ajax_edit/:id', to: 'author#update'
 
 end

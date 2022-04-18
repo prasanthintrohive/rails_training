@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'author_index', 'data-turbolinks-track': 'reload' %>
 <%= form_with scope: :author, url: author_create_author_path(@author)  do |f| %>
   <br>
   <div class= "row">
@@ -23,12 +24,12 @@
   </thead>
   <tbody>
 
-  <% @author.each_with_index do |author,index|  %>
-    <tr>
+  <% @authors.each_with_index do |author,index|  %>
+    <tr id= <%= author.id%>>
       <td><%= index+1 %></td>
       <td><%= author.name %></td>
-      <td>
-        <%= link_to  edit_author_path(author) do %>
+      <td id= 'edit_author', data-auth-id= <%= author.id%>>
+        <%= link_to  do %>
           <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
         <% end %>
       </td>
@@ -41,3 +42,5 @@
   <% end  %>
   </tbody>
 </table>
+
+<div id= 'new-render'></div>
