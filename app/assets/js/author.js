@@ -7,25 +7,21 @@ jQuery(document).ready(function () {
                 text: "Fill your column and Try again later",
                 sticky: false
                 });
-                return;
+        return false
         }
         $.ajax({
             type: "post", 
             url: "create_author",
             data: {author:{name: name}},
             success: function(data, textStatus, jqXHR){
-                jQuery("#author_row").prepend(
-                    data
-                );
+                jQuery("#author_row").prepend( data);
                 jQuery('.form-control').val("");
-
-                    jQuery.gritter.add({
-                        title: 'Notification',
-                        text: "New Author is Added to the List",
-                        sticky: false
-                    });
-                    
-                }  
+            jQuery.gritter.add({
+                title: 'Notification',
+                text: "New Author is Added to the List",
+                sticky: false
+            });
+        }  
             ,
             error: function(jqXHR, textStatus, errorThrown){
                 jQuery.gritter.add({
