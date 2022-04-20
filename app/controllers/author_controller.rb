@@ -23,11 +23,12 @@ class AuthorController < ApplicationController
      end
     def update
         if @author.update(params.require(:author).permit(:name))
-            flash[:notice] = "author successfully updated!"
-            redirect_to author_add_author_path
-          else
-            flash[:alert] =  @author.errors.full_messages&.join(', ')
-            render :edit
+            respond_to do |format|
+                format.html {render partial:"after_update", locals:{author: @author} }
+            end
+        else
+        flash[:alert] =  @author.errors.full_messages&.join(', ')
+        render :edit
         end
     end 
     def destroy

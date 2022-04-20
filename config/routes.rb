@@ -36,5 +36,5 @@ Rails.application.routes.draw do
   post '/create_book' => 'book#create_book' 
   get '/show_deleted' => 'book#show_deleted'
   get 'author/ajax_edit/:id' ,to: 'author#ajax_edit', as: 'ajax_edit'
-  patch 'author/ajax_edit/:id', to: 'author#update'
+  patch 'author/ajax_edit/:id', to: 'author#update', as: 'update_author'
 end
