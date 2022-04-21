@@ -18,7 +18,7 @@ class RequestController < ApplicationController
         @loanedbook.user_id = current_user.id
         @loanedbook.loaned_date = Time.now.utc
         @loanedbook.book_id = @book.id
-        @loanedbook.due_date =@loanedbook.loaned_date.advance(days: 10)
+        @loanedbook.due_date =@loanedbook.loaned_date.advance(days: 2)
         @loanedbook.status = LoanedBook::STATUS[:pending]
         if @loanedbook.save
             flash[:notice] =  "your request is pending "
