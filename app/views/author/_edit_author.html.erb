@@ -1,11 +1,24 @@
-<%= form_with model: @author, url: ajax_edit_path, method: :patch, local: true do |f| %>
-  <br>
-  <div class= "row">
-    <div class= "col-md-3">
-      <%= f.text_field :name,placeholder: 'Add author', class:"form-control " %>
-    </div>  
-    <div class= "col-md-3">
-      <%= f.submit 'Update', class:"btn btn-secondary" %>
-    </div>    
+<td><%= @author.id %></td>
+<td>
+<div class= "row">
+  <%= form_with model: @author, url: ajax_edit_path, method: :patch, local: true do |f| %>
+    <div class= "row">
+      <div class= "col-md-3">
+        <%= f.text_field :name,placeholder: 'Add author', class:"form-control ", id:'author_name' %>
+      </div> 
+      <br>   
+  <% end %>
+</div>
+</td>
+<td>
+  <div class= "col-md-3">
+  <button class="btn btn-secondary btn" id='update_btn'>Update</button>
   </div>
-<% end %>
+</td>
+<td>
+  <div class= "col-md-3">
+  <button class="btn btn-secondary btn" id='cancel_btn'>Cancel</button>
+  </div>
+</td>
+
+
