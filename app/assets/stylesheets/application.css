@@ -16,6 +16,9 @@
  *= require gritter 
 
  */
+ #user_details{
+   display: none;
+ }
 
  .nav-bottom {
    position: absolute;
@@ -31,6 +34,8 @@
 #sidebar{
   position: relative;
   top: 0;
+
+  left: 0;
 }
 
 
@@ -97,7 +102,8 @@
 }
 #con-1{
   width: 100vw;
-  position:relative ;
+  position:fixed ;
+  height: 60px;
   right: 0;
   top: 0;
 }
@@ -110,9 +116,33 @@
   display: none;
 }
 
-.custom_gritter {
-  background-color: green;
-  border-radius: 5px;
-  text-align: center;
-  border: 1px solid white;
+
+#table-container{
+  position: fixed;
+  top: 100px;
+  left:550px;
+}
+.my-custom-scrollbar {
+  position: relative;
+  height: 550px;
+  overflow: auto;
+  }
+.table-wrapper-scroll-y {
+display: block;
+}
+#admin-view{
+  display: none;
+}
+
+#user-row{
+  
+  background-color: rgba(226, 226, 226, 0.828);
+  padding-top: 20px;
+  border-radius: 20px;
+}
+.card{
+  cursor: pointer;
+}
+.card:hover{
+  background-color: rgb(233, 231, 231);
 }

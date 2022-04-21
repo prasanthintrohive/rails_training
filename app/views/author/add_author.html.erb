@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'author', "data-turbo-track": "reload" %>
 
-<h2>Add Authors</h2>
+<h2 id ="added">Add Authors</h2>
 
 <%= form_with  url:create_author_path do |f| %>
   <br>
@@ -9,16 +9,17 @@
       <%= f.text_field :name, placeholder: 'Name', class:"form-control", id:'auth_name'%>
     </div>  
     <div class= "col-md-3">
-      <button class="btn btn-secondary btn">Add</button>
+      <button class="btn btn-secondary btn" >Add</button>
     </div>    
   </div>
 <% end %>
 <br>
 
+
 <table class="table table-striped table-bordered table-md overflow-auto" style="height:100px" id = "author_row">
   <thead>
     <tr>
-      <th scope="col">S.no</th>
+      <th scope="col">ID</th>
       <th scope="col">Author</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
@@ -32,3 +33,5 @@
 
   </tbody>
 </table>
+<%= will_paginate @author %>
+

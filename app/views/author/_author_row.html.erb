@@ -1,6 +1,6 @@
 <tr>
     <td><%= author.id %></td>
-    <td><%= author.name %></td>
+    <td data-auth_id = <%= author.id %> ><%= author.name %></td>
     <td>
     <%= link_to  edit_author_path(author) do %>
         <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>

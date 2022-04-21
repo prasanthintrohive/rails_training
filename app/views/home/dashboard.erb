@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'dashboard', "data-turbo-track": "reload" %>
+
 <div class="row">
 <%= line_chart @relation.group_by_day(:created_at, format: "%a").count, width: "600px", height: "250px" , colors: ['green','blue']%>
 <div class="col">
@@ -7,9 +9,7 @@
 </div>
 <script>
 
-
-
-var xValues = ["Loaned-Books", "Returned-Book", "Pending-book"];
+var xValues = ["Loaned-Books", "Pending-book", "Returned-Book"];
 var yValues = <%= @values.to_json.html_safe %>;
 var barColors = [
   "#b91d47",
@@ -36,4 +36,33 @@ new Chart("mChart", {
 
 
 </script>
+<br><br>
+<button class="btn btn-secondary" id = 'show'>Show</button>
+<br><br>
 
+<div class="row" id= "user-row">
+<% @users.each do |user| %>
+  <div class="col-xl-4 col-lg-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <img
+            src="/assets/def_profile.jpeg"
+            alt=""
+            style="width: 45px; height: 45px"
+            class="rounded-circle"
+          />
+          <div class="ms-3">
+            <p class="fw-bold mb-1"><%= user.full_name %></p>
+            <p class="text-muted mb-0"><%= user.email %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<div id = user_details>
+
+</div>

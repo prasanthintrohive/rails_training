@@ -1,7 +1,7 @@
 class AuthorController < ApplicationController
   before_action :get_author_id, only: [:update,:destroy,:edit]
     def add_author
-        @author = Author.all
+        @author = Author.paginate(page: params[:page], per_page:7)
     end
     def edit
     end

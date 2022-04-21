@@ -1,7 +1,8 @@
-<table class="table table-striped">
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+<table class="table table-striped table-bordered table-md ">
   <thead>
     <tr>
-      <th scope="col">S.no</th>
+      <th scope="col">ID</th>
       <th scope="col">Book Name</th>
       <th scope="col">Author Name</th>
       <th scope="col">Borrowed date</th>
@@ -12,10 +13,9 @@
   </thead>
   <tbody>
  
-  <% count = 0 %>
   <% @loanedbooks.each do |loaned_book|  %>
     <tr>
-      <td><%= count += 1 %></td> 
+      <td><%= loaned_book.id %></td> 
       <td><%= loaned_book.book.title %></td>
       <td><%= loaned_book.book.author.name %></td>
       <td><%= loaned_book.loaned_date.to_date %></td>
@@ -30,3 +30,4 @@
   <% end  %>
 </tbody>
 </table>
+</div>

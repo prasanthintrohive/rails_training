@@ -1,6 +1,8 @@
 jQuery(document).ready(function () {
     jQuery(document).on("click", '.btn', function(){
+   
         var name = $('.form-control').val();
+        console.log($(this).html())
         if(name == ""){
             jQuery.gritter.add({
                 title: 'Error: ',

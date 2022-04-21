@@ -14,33 +14,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
+<script src="static/js/libs/bootstrap/bootstrap.min.js"></script>
 
       <title>Libmanage</title> 
       <%= favicon_link_tag asset_path('book_icon2.png') %>
   </head>
   <body>
-    <% if user_signed_in? %>
-      <%= render 'layouts/header' %>
-      <%= render 'layouts/navbar' %>
-     <% end %>
-      <main class ="col px-0 flex-grow-1 " >
-          <div class="container">
-          <br>
-            <%= yield %>
+    
+      <main class ="col px-0 flex-grow-1 " id ='main' >
+          <% if user_signed_in? %>
+          <%= render 'layouts/header' %>
+          <%= render 'layouts/navbar' %>
+          <% end %>
+          <div class="container" id = "table-container">
+            <%= yield %>  
           </div>
-              <div class="footer-copyright text-center py-3 nav-bottom  container footer">© 2020 Copyright:
-          <a href="/"> Libmanage.com</a>
+          <div class="footer-copyright text-center py-3 nav-bottom  container footer" id ='footer'>© 2020 Copyright:
+            <a href="/"> Libmanage.com</a>
           </div>
       </main>
-    </div>
-
-
-  </div>
 
   </body>
 
- <%= js add_gritter(flash[:notice], :title => "Notifications", :sticky => true, :time => 500) %>
+    <%= js add_gritter(flash[:notice], :title => "Notifications", :sticky => true, :time => 500) %>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

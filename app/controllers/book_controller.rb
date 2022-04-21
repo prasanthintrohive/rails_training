@@ -3,7 +3,7 @@ class BookController < ApplicationController
     def add_book 
         @author = Author.all
         if params[:show_deleted] == '1'
-            @book = Book.all 
+            @Book = Book.paginate(page: params[:page], per_page:7)
         else
             @book = Book.where(is_deleted: false)
         end

@@ -19,11 +19,15 @@ gem 'pg'
 
 gem 'sass-rails'
 
+gem 'will_paginate', '~> 3.3'
+
 gem "chartkick"
 gem 'chart-js-rails'
 
 #GroupBy
 gem "groupdate"
+
+gem 'will_paginate-bootstrap4'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -57,6 +61,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+
+
 
 gem 'devise'
 # Use Sass to process CSS
