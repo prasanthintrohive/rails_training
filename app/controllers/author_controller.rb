@@ -24,7 +24,7 @@ class AuthorController < ApplicationController
     def update
         if @author.update(params.require(:author).permit(:name))
             respond_to do |format|
-                format.html {render partial:"after_update", locals:{author: @author} }
+                format.html {render partial:"author_row", locals:{author: @author} }
             end
         else
         flash[:alert] =  @author.errors.full_messages&.join(', ')

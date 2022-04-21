@@ -1,5 +1,5 @@
 <td><%= @author.id %></td>
-<td>
+<td >
 <div class= "row">
   <%= form_with model: @author, url: ajax_edit_path, method: :patch, local: true do |f| %>
     <div class= "row">
@@ -11,13 +11,13 @@
 </div>
 </td>
 <td>
-  <div class= "col-md-3">
-  <button class="btn btn-secondary btn" id='update_btn'>Update</button>
+  <div class= "col-md-3" id='icon_hight'>
+  <i class="fa fa-check" id='update_btn' aria-hidden="true"></i>
   </div>
 </td>
 <td>
-  <div class= "col-md-3">
-  <button class="btn btn-secondary btn" id='cancel_btn'>Cancel</button>
+  <div class= "col-md-3" id='icon_hight'>
+    <i class="fa fa-times" id='cancel_btn' aria-hidden="true"></i>
   </div>
 </td>
 

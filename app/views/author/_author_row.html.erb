@@ -1,14 +1,12 @@
-<tr id= <%= author.id%>>
-    <td><%= author.id %></td>
-    <td><%= author.name %></td>
-    <td id= 'edit_author', data-auth-id= <%= author.id%>>
-    <%= link_to  edit_author_path(author) do %>
-        <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
-    <% end %>
-    </td>
-    <td>
-    <%= link_to "/author/destroy_me/#{author.id}", data: { confirm: 'Are you sure?' , turbo: "false", id: author.id}, class:"trash" do%>
-        <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
-    <% end %>
+    <td id="auth_id_cln"><%= author.id %></td>
+        <td id="auth_cln"><%= author.name %></td>
+        <td id= 'edit_author', data-auth-id= <%= author.id%>>
+        <%= link_to  edit_author_path(author) do %>
+            <i class="fa fa-pencil-square-o" aria-hidden="true" id = 'icons'></i>
+        <% end %>
+        </td>
+        <td>
+        <%= link_to "/author/destroy_me/#{author.id}", data: { confirm: 'Are you sure?' , turbo: "false", id: author.id}, class:"trash" do%>
+            <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
+        <% end %>
     </td>    
-</tr>

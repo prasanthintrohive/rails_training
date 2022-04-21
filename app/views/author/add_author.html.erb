@@ -24,7 +24,9 @@
   </thead>
   <tbody>
   <% @authors.each do |author|  %>
+    <tr id= <%= author.id%>>
     <%= render partial:'author_row', locals: {author: author} %>
+    </tr>
   <% end  %>
 
   </tbody>

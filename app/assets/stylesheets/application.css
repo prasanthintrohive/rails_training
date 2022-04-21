@@ -112,9 +112,18 @@
 }
 
 
-.custom_gritter {
-  background-color: green;
-  border-radius: 5px;
-  text-align: center;
-  border: 1px solid white;
+
+#author_name {
+  width: auto;
+}
+
+#icon_hight{
+  cursor: pointer; 
+  padding-top: 8px;
+}
+#auth_cln{
+  width: 400px;
+}
+#auth_id_cln{
+  width: 100px;
 }
