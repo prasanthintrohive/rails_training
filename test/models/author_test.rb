@@ -1,10 +1,9 @@
-require "test_helper"
+require "test_helper.rb"
 
 class AuthorTest < ActiveSupport::TestCase
   test "should not save article without title" do
-    article = Author.new
-    binding.pry
-    assert_not article.save
+    author = Author.new
+    assert_not author.save
   end
 
 end
