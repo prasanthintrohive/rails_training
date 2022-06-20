@@ -1,20 +1,50 @@
 <div class="row">
-<%= line_chart @relation.group_by_day(:created_at, format: "%a").count, width: "600px", height: "250px" , colors: ['green','blue']%>
+<h2><center>Library Status</center></h2>
+<h6>Loaned Book status</h6>
+<%= area_chart @relation.group_by_day(:created_at, format: "%a").count, width: "650px", height: "350px" , colors: ['green','blue']%>
 <div class="col">
     <canvas id="mChart"width="300" height="150"></canvas>
 </div>
 
+</div><br><br><br>
+<div>
+  <table class="table">
+  <tbody>
+    <tr>
+      <th>Total books</th>
+      <td><%= @books.count %></td>
+
+    </tr>
+    <tr>
+      <th>Books for Return Approval</th>
+      <td><%= @verify %></td>
+    </tr>
+    <tr>
+      <th>Books for Borrow Approval</th>
+      <td><%= @pending_book %></td>
+
+    </tr>
+    <tr>
+      <th>Books Over the due</th>
+      <td><%= @over_due %></td>
+    </tr>
+     <tr>
+      <th>Books Over the due</th>
+      <td><%= @approved %></td>
+    </tr>
+  </tbody>
+</table>
 </div>
 <script>
 
-
-
-var xValues = ["Loaned-Books", "Returned-Book", "Pending-book"];
+var xValues = ["Loaned-Books", "Returned-Books", "Pending-books","Under Verification","Approved","Over-due"];
 var yValues = <%= @values.to_json.html_safe %>;
 var barColors = [
   "#b91d47",
   "#00aba9",
   "#2b5797",
+  "#4k5797",
+  "#008957",
 ];
 
 new Chart("mChart", {
@@ -33,7 +63,4 @@ new Chart("mChart", {
     }
   }
 });
-
-
 </script>
-

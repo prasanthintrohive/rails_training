@@ -1,0 +1,8 @@
+<p>
+ <h2> Hi <%= @user.full_name %>, Please return the borrowed book and pay the fine </h2>
+ <h3>Book Name: <%= @book.title %></h3>
+ <h3>Book Due date: <%= @loanedbook.due_date %></h3>
+ <h3>Book Return date: <%= @loanedbook.returned_date %></h3>
+ <h3>Fine Amount: Rs.<%= @fine.amount %> for <%= @fine.amount %> days.</h3>
+ <h3>Tomorow is the last date for retuning the borrowed book to avoid fine Rs.10 per day.</h3>
+</p>

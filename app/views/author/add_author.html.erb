@@ -5,13 +5,14 @@
   <div class= "row">
     <div class= "col-md-3">
       <%= f.text_field :name, placeholder: 'Name', class:"form-control", id:'auth_name'%>
-    </div>  
+    </div>
     <div class= "col-md-3">
       <button class="btn btn-secondary btn" id='add_btn'>Add</button>
-    </div>    
+    </div>
   </div>
 <% end %>
 <br>
+<%= paginate @authors, theme: 'bootstrap-5' %>
 
 <table class="table table-striped table-bordered table-md overflow-auto" style="height:100px" id = "author_row">
   <thead>
@@ -23,8 +24,8 @@
     </tr>
   </thead>
   <tbody>
-  <% @authors.each do |author|  %>
-    <%= render partial:'author_row', locals: {author: author} %>
+  <% @authors.each_with_index do |author, index|  %>
+    <%= render partial:'author_row', locals: {author: author, index: index} %>
   <% end  %>
 
   </tbody>

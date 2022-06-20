@@ -1,4 +1,4 @@
-<table class="table  table-bordered table-md overflow-auto" id="add-table">
+<table class="table  table-bordered table-striped table-md overflow-auto" id="add-table">
   <thead>
     <tr>
       <th scope="col">S.no</th>
@@ -8,8 +8,8 @@
     </tr>
   </thead>
   <tbody id="table-row">
-  <% books.each do |book|  %>  
-    <%= render partial: "book_row", locals: { book: book} %>
+  <% books.each_with_index do |book, index|  %>
+    <%= render partial: "book_row", locals: { book: book, index: index} %>
   <% end  %>
   </tbody>
 </table>

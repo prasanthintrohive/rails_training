@@ -1,0 +1,11 @@
+<h1>Status of returned book</h1>
+
+<p>
+ <h2> Hi <%= @user.full_name %>, your return is verified </h2>
+ <h3>Book Name: <%= @book.title %></h3>
+ <h3>Book Due date: <%= @loanedbook.due_date %></h3>
+ <h3>Book Returned date: <%= @loanedbook.returned_date %></h3>
+ <% if @time > 0 %>
+    <h3>Fine amount is : Rs.<%= @fine.amount %> for <%= @fine.count %> days.</h3>
+ <% end %>
+</p>

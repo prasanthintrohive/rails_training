@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # root
   root 'request#borrow'
- 
+
   #author
   get '/author/:id/edit', to: 'author#edit', as: 'edit_author'
   patch 'author/:id/edit', to: 'author#update'
@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   get '/book/:id/delete_book', to: 'book#delete_book', as: 'delete_book'
   get 'home/dashboard'
 
-
+  get 'admin/access' => 'admin#access'
+  post 'user_params' => 'admin#user_params'
   get 'admin/accept_request_index'
   get '/admin/borrow/:id' => 'request#approve_to_borrow'
   get '/admin/return/:id' => 'request#approve_to_return'
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
   #create author
   post 'author/create_author'=> 'author#create_author', as: 'create_author'
   #create book
-  post '/create_book' => 'book#create_book' 
+  post '/create_book' => 'book#create_book'
   get '/show_deleted' => 'book#show_deleted'
   get 'author/ajax_edit/:id' ,to: 'author#ajax_edit', as: 'ajax_edit'
   patch 'author/ajax_edit/:id', to: 'author#update', as: 'update_author'

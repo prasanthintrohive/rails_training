@@ -2,13 +2,15 @@
   <div class= "row">
     <div class= "col-md-3">
       <%= form.text_field :query, value:@search_keyword,type:'search', class:'form-control', placeholder:'Search...' %>
-    </div>    
+    </div>
     <div class= "col-md-3">
       <%= form.submit "Search", class:'btn btn-secondary' %>
-    </div>    
-  </div>    
+    </div>
+  </div>
 <% end %>
-
+<br><br>
+<h4 align="right">Your Borrwoing limit is <%= current_user.count %></h4>
+<%= paginate @books, theme: 'bootstrap-5' %>
 <table class="table table-striped">
 
   <thead>
@@ -16,19 +18,30 @@
       <th scope="col">S.no</th>
       <th scope="col">Book</th>
       <th scope="col">Author</th>
-      <th scope="col">Action</th>
+      <% if current_user.count <= 3 &&  current_user.count != 0%>
+       <th scope="col">Action</th>
+      <% end  %>
     </tr>
   </thead>
   <tbody>
-      <% @books.each.with_index(1) do |book, count|  %>
-      <% unless book.loaned_books.where(user_id: current_user.id).where("status != 'returned'").exists? %>
-        <tr>
-          <td><%= count %></td>
-          <td><%= book.title %></td>
-          <td><%= book.author.name %></td>
-          <td><%= link_to "Borrow", {controller: 'request', action: 'request_to_borrow', id: book.id} ,method: :get, class: 'btn btn-primary'%></td>
-        </tr>
-         <% end %>
+    <% i=1 %>
+      <% @books.each.with_index do |book, count|  %>
+      <% unless book.loaned_books.where("status != 'returned'").exists? %>
+
+          <tr>
+            <td><%= i %></td>
+            <td><%= book.title %></td>
+            <td><%= book.author.name %></td>
+            <% if current_user.count <= 3 &&  current_user.count != 0%>
+              <td><%= link_to "Borrow", {controller: 'request', action: 'request_to_borrow', id: book.id} ,method: :get, class: 'btn btn-primary'%></td>
+            <% end  %>
+          </tr>
+          <% i=i+1 %>
+        <% end %>
       <% end  %>
   </tbody>
 </table>
+<br>
+<% if current_user.count == 0%>
+      <h3>Your Borrwoing limit is over. Please return a book to borrow</h3>
+<% end  %>

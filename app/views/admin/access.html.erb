@@ -1,0 +1,19 @@
+<h1>Admin access</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with( url: user_params_path, local: true,method: :post) do  %>
+      <div class="form-group">
+          <%= label_tag :Username %>
+          <%= text_field_tag :email, nil, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+              <%= check_box_tag :admin %>
+              <%= label_tag :Admin %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "update",class: 'btn btn-success' %>
+      <div class="form-group">
+    <% end %>
+  </div>
+</div>
+

@@ -1,3 +1,4 @@
+<%= paginate @loanedbooks, theme: 'bootstrap-5' %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -11,11 +12,11 @@
     </tr>
   </thead>
   <tbody>
- 
+
   <% count = 0 %>
   <% @loanedbooks.each do |loaned_book|  %>
     <tr>
-      <td><%= count += 1 %></td> 
+      <td><%= count += 1 %></td>
       <td><%= loaned_book.book.title %></td>
       <td><%= loaned_book.book.author.name %></td>
       <td><%= loaned_book.loaned_date.to_date %></td>
@@ -30,3 +31,4 @@
   <% end  %>
 </tbody>
 </table>
+

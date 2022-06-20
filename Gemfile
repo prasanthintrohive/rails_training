@@ -13,18 +13,20 @@ gem "sprockets-rails"
 # gem "sqlite3", "~> 1.4"
 gem 'jquery-rails'
 gem 'delayed_job_active_record'
-
+gem 'whenever', require: false
 gem "gritter", "1.2.0"
 
 gem 'pg'
 
 gem 'sass-rails'
 
+gem "groupdate"
 gem "chartkick"
 gem 'chart-js-rails'
 
 #GroupBy
-gem "groupdate"
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"

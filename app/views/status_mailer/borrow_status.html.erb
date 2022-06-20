@@ -1,0 +1,9 @@
+<h1>Status of borrowed book</h1>
+
+<p>
+ <h2> Hi <%= @user.full_name %>, your borrow request is approved</h2>
+ <h3>Book name: <%= @book.title %></h3>
+ <h3>Book Due date: <%= @loanedbook.due_date %></h3>
+ <h3>If you returned the book after the due date fine amount is Rs.10 per day</h3>
+ <h3>Thank you</h3>
+</p>

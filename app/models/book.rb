@@ -4,14 +4,15 @@ class Book < ApplicationRecord
     validates :title, presence: true, uniqueness: { case_sensitive: true }
     validates :published_year, presence:true
 
-    def self.search(keyword)
+    def self.search(keyword,page)
         if keyword.blank?
-            books = Book.where(is_deleted: false) 
+            books = Book.where(is_deleted: false).page(page).per(12)
+
             loanedbooks = LoanedBook.all
         else
             books = Book.joins(:author)
                         .where("books.title ilike :keyword or authors.name ilike :keyword", keyword: "%#{keyword}%")
-                        .where(is_deleted: false)
+                        .where(is_deleted: false).page(page).per(12)
             loanedbooks = LoanedBook.where(book_id: books.select(:id))
         end
         [books, loanedbooks]

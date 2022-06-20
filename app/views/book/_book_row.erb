@@ -1,7 +1,7 @@
 
   <% tr_class = book.is_deleted ? 'custom_colors' : ''%>
     <tr class = "<%= tr_class %>">
-      <td><%= book.id%></td>
+      <td><%= index + 1%></td>
       <td><%= book.title %></td>
       <td><%= book.author.name %></td>
     <td>
@@ -15,5 +15,5 @@
           <i class="fa fa-trash" aria-hidden="true" id="trash"></i>
         <% end %>
       <% end %>
-    </td>   
+    </td>
   </tr>

@@ -1,7 +1,7 @@
 class AuthorController < ApplicationController
   before_action :get_author_id, only: [:update,:destroy,:edit, :ajax_edit]
     def add_author
-        @authors = Author.all
+        @authors = Author.order(:name).page(params[:page]).per(5)
     end
     def edit
     end
@@ -11,7 +11,7 @@ class AuthorController < ApplicationController
         end
     end
     def create_author
-        @author = Author.new(params.require(:author).permit(:name)) 
+        @author = Author.new(params.require(:author).permit(:name))
         if @author.save
             respond_to do |format|
                 format.html {render partial:"author_row", locals:{author: @author} }
@@ -30,9 +30,9 @@ class AuthorController < ApplicationController
         flash[:alert] =  @author.errors.full_messages&.join(', ')
         render :edit
         end
-    end 
+    end
     def destroy
-       
+
         @author.destroy
         flash[:notice] = "The author was successfully destroyed."
         redirect_to author_add_author_path(@author)
