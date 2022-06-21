@@ -20,5 +20,13 @@ class AdminController < ApplicationController
       end
       # redirect_to admin_access_path
     end
+    def display_fine
+      if current_user.admin
+       @fine = Fine.all
+      else
+        @user = User.find_by(id: current_user.id)
+        @lb_books = @user.loaned_books
+      end
+    end
 end
 

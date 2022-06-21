@@ -45,7 +45,8 @@ class RequestController < ApplicationController
         @loanedbook.status = LoanedBook::STATUS[:approved]
         if @loanedbook.save
             user = User.find_by(id: @loanedbook.user_id)
-            # StatusMailer.borrow_status(user,@loanedbook).deliver
+            binding.pry
+            StatusMailer.borrow_status(user,@loanedbook).deliver
             flash[:notice] =  "Approved successfully "
         else
            flash[:notice] =   @loanedbook.errors.full_messages&.join(', ')

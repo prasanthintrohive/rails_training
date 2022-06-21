@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'request#borrow'
 
   #author
+  get 'display_fine', to: 'admin#display_fine'
   get '/author/:id/edit', to: 'author#edit', as: 'edit_author'
   patch 'author/:id/edit', to: 'author#update'
   get '/author/destroy_me/:id' => 'author#destroy'

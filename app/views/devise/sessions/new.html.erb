@@ -13,7 +13,7 @@
           </div>
           <h3>Login</h3>
 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>  
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group">
 			 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email", required: true%>
             </div>
@@ -25,7 +25,7 @@
                 <%= f.check_box :remember_me %>
                 <%= f.label :remember_me %>
               </div>
-            <% end %> 
+            <% end %>
             <div class="form-group">
 			  <%= f.submit "Sign In", class: "btn btn-secondary btn-lg btn-block" %>
             </div>
@@ -33,7 +33,7 @@
             <div class="form-group forget-password">
 			    <%= render "devise/shared/links" %>
             </div>
-        <% end %> 
+        <% end %>
         </div>
       </div>
     </div>

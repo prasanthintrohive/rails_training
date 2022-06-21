@@ -36,6 +36,9 @@
                 <%= link_to 'Add Book',add_book_path, class: 'nav-link'%>
               </li>
             <% end %>
+             <li class="nav-item <%= active_class(display_fine_path) %>">
+                <%= link_to 'Fined book',display_fine_path, class: 'nav-link'%>
+              </li>
             <% if current_user.email == "j.prasanth.me98@gmail.com" %>
               <li class="nav-item <%= active_class(admin_access_path) %>">
                 <%= link_to 'Add Admin User',admin_access_path, class: 'nav-link'%>

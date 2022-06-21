@@ -1,0 +1,37 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">S.no</th>
+      <th scope="col">Day count</th>
+      <th scope="col">Amount </th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if current_user.admin %>
+    <% count = 0 %>
+    <% @fine.each do |fine|  %>
+      <tr>
+        <td><%= count += 1 %></td>
+        <td><%= fine.day_count %></td>
+        <td><%= fine.amount%></td>
+        <td><%= fine.status %></td>
+      </tr>
+     <%end %>
+  <% else %>
+   <% count = 0 %>
+    <% @lb_books.each do |book|  %>
+       <% fine = Fine.find_by(loaned_books_id: book.id)%>
+       <% if fine != nil %>
+        <tr>
+          <td><%= count += 1 %></td>
+          <td><%= fine.try(:day_count) %></td>
+          <td><%= fine.try(:amount)%></td>
+          <td><%= fine.try(:status) %></td>
+        </tr>
+        <%end %>
+       <%end %>
+  <%end %>
+
+</tbody>
+</table>

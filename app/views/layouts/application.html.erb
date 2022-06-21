@@ -16,30 +16,31 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 
-      <title>Libmanage</title> 
+      <title>Libmanage</title>
       <%= favicon_link_tag asset_path('book_icon2.png') %>
   </head>
   <body>
+
+
     <% if user_signed_in? %>
       <%= render 'layouts/header' %>
       <%= render 'layouts/navbar' %>
      <% end %>
       <main class ="col px-0 flex-grow-1 " >
-          <div>
+        <div>
+         <br>
           <div class="container">
+            <%= render 'layouts/notification' %>
           <br>
             <%= yield %>
           </div>
-          
+
         </div>
       </main>
-    </div>
+
     <div class="footer-copyright text-center py-3 nav-bottom  container footer">© 2020 Copyright:
       <a href="/"> Libmanage.com</a>
     </div>
-
-  </div>
-
   </body>
 
  <%= js add_gritter(flash[:notice], :title => "Notifications", :sticky => true, :time => 500) %>
