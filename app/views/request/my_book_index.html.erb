@@ -21,7 +21,7 @@
       <td><%= loaned_book.loaned_date.to_date %></td>
       <td><%= loaned_book.due_date.to_date %></td>
       <td><%= loaned_book.status %></td>
-      <% if loaned_book.status == LoanedBook::STATUS[:approved] %>
+      <% if loaned_book.status == LoanedBook::STATUS[:approved] || LoanedBook::STATUS[:outdated] %>
         <td><%= link_to 'RETURN', {controller: "request",action: "request_to_return", id: loaned_book.id }, method: :get ,class: "btn btn-primary" %></td>
       <% else %>
         <td></td>

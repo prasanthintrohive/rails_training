@@ -8,15 +8,25 @@ gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+gem 'carrierwave', '~> 2.0'
+gem 'mocha'
+
 
 # Use sqlite3 as the database for Active Record
 # gem "sqlite3", "~> 1.4"
 gem 'jquery-rails'
 gem 'delayed_job_active_record'
 
+gem 'shoulda-matchers', '~> 5.0'
+gem 'shoulda-context', '~> 1.2', '>= 1.2.2'
+
 gem "gritter", "1.2.0"
 
 gem 'pg'
+group :development, :test do
+  gem 'factory_bot_rails'
+end
+gem 'whenever', require: false
 
 gem 'sass-rails'
 

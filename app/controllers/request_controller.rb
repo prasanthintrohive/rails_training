@@ -14,6 +14,7 @@ class RequestController < ApplicationController
 
 
     def request_to_borrow
+    ActiveRecord::Base.transaction do
         @loanedbook = LoanedBook.new
         @loanedbook.user_id = current_user.id
         @loanedbook.loaned_date = Time.now.utc
@@ -25,6 +26,12 @@ class RequestController < ApplicationController
         else 
             flash[:alert] =  @loanedbook.errors.full_messages&.join(', ')
         end
+
+        book = Book.create(title:'1234', published_year: 2000, author_id: 99)
+        outcome = book.save
+
+        raise ActiveRecord::Rollback unless outcome
+    end
         redirect_to root_path
      end
 

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/book/:id/edit', to: 'book#edit', as: 'edit_book'
   patch 'book/:id/edit', to: 'book#update'
   get '/book/:id/delete_book', to: 'book#delete_book', as: 'delete_book'
-  get 'home/dashboard'
+  get 'home/dashboard',to: "home#dashboard", as: 'dashboard'
 
 
   get 'admin/accept_request_index'
