@@ -7,7 +7,7 @@ class BookTest < ActiveSupport::TestCase
         FactoryBot.create(:book, :for_others)
         assert_equal( 2, Book.count, ['book count did not increased by two'] )
     end
-    
+
     context '#delete' do
       setup do
         FactoryBot.create(:book)
@@ -32,7 +32,7 @@ class BookTest < ActiveSupport::TestCase
       end
       should 'raise expection' do
         assert_raises('ActiveRecord::RecordNotFound') do
-          binding.pry
+          # binding.pry
           Book.find(title:"My book 1")
         end
       end
