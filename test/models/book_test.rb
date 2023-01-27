@@ -3,6 +3,7 @@ require 'test_helper'
 class BookTest < ActiveSupport::TestCase
 
     should 'create book' do
+      pp "================ book_test =================="
       FactoryBot.create(:book, :for_me)
         FactoryBot.create(:book, :for_others)
         assert_equal( 2, Book.count, ['book count did not increased by two'] )

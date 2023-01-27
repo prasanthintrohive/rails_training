@@ -11,7 +11,7 @@ class BookControllerTest < ActionDispatch::IntegrationTest
     end
 
     should 'have 2 records' do
-      binding.pry
+      # binding.pry
       get root_path
       assert_response :success
       assert_select 'table tbody', 1
