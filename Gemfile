@@ -13,7 +13,10 @@ gem 'mocha'
 
 
 # Use sqlite3 as the database for Active Record
-# gem "sqlite3", "~> 1.4"
+group :development, :test do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'sqlite3', '~> 1.4'
+end
 gem 'jquery-rails'
 gem 'delayed_job_active_record'
 
@@ -22,11 +25,15 @@ gem 'shoulda-context', '~> 1.2', '>= 1.2.2'
 
 gem "gritter", "1.2.0"
 
-gem 'pg'
 group :development, :test do
   gem 'factory_bot_rails'
 end
+
 gem 'whenever', require: false
+
+group :production do
+  gem 'pg'
+end
 
 gem 'sass-rails'
 
